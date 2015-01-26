@@ -1,0 +1,7 @@
+.page-container {
+  @include pad;
+  background: #fff;
+  box-shadow: 1px 1px 1px darken($base-background-color, 15);
+  border: 1px solid #eee;
+  border-bottom: 1px solid #ccc;
+}
