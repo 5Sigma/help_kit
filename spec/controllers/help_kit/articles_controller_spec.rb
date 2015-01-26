@@ -8,9 +8,14 @@ module HelpKit
         before { get :show, id: article}
         it { should render_template('show') }
         it { should render_with_layout('help_kit/application') }
+        it { should rescue_from(ActiveRecord::RecordNotFound).with(:not_found) }
         it "should assign article" do
           expect(assigns(:article)).to eq(article)
         end
+      end
+      context "for non-existing article" do
+        before { get :show, id: 1230 }
+        it { should render_template('not_found') }
       end
     end
     describe "#edit" do
@@ -40,6 +45,33 @@ module HelpKit
           it "should assign @article" do
             expect(assigns(:article)).to eq(article)
           end
+        end
+      end
+    end
+    describe "#new" do
+      before { get :new }
+      it { should render_template('new') }
+      it "should assign(@article)" do
+        expect(assigns(:article)).to be_a_new(Article)
+      end
+    end
+    describe "#create" do
+      let(:attributes) {{ article: attributes_for(:help_kit_article) }}
+      context "with valid attributes" do
+        it "should create an article record" do
+          expect {
+            post :create, attributes
+          }.to change(Article, :count).by(1)
+        end
+      end
+      context "with invalid attributes" do
+        before {
+          expect_any_instance_of(Article).to receive(:save) { false }
+          post :create, attributes
+        }
+        it { should render_template('new') }
+        it "should assign @article" do
+          expect(assigns(:article)).to be_a_new(Article)
         end
       end
     end

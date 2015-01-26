@@ -2,6 +2,7 @@ require_dependency "help_kit/application_controller"
 
 module HelpKit
   class ArticlesController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, :with => :not_found
     before_action :set_article, only: [:show, :edit, :update]
 
     def show
@@ -14,11 +15,20 @@ module HelpKit
     end
 
     def new
-      @article = Article.new
+      @article = Article.new(title: params[:title])
+    end
+
+    def create
+      @article = Article.new(article_params)
+      if @article.save
+        redirect_to @article
+      else
+        render 'new'
+      end
     end
 
     def edit
-        render 'edit'
+      render 'edit'
     end
 
     def update
@@ -30,6 +40,10 @@ module HelpKit
     end
 
     private
+
+    def not_found
+      render 'not_found'
+    end
 
     def set_article
       @article = Article.friendly.find(params[:id])
