@@ -2,24 +2,23 @@ require_dependency "help_kit/application_controller"
 
 module HelpKit
   class ArticlesController < ApplicationController
-    before_action :set_article
+    before_action :set_article, only: [:show, :edit, :update]
 
     def show
       if @article
         render 'show'
       else
-        @article = Article.new
-        render 'create'
+        @article = Article.new({title: params[:title]})
+        render 'new'
       end
     end
 
+    def new
+      @article = Article.new
+    end
+
     def edit
-      if @article
         render 'edit'
-      else
-        @article = Article.new
-        render 'create'
-      end
     end
 
     def update
@@ -33,7 +32,7 @@ module HelpKit
     private
 
     def set_article
-      @article = Article.find_by_title(params[:title])
+      @article = Article.friendly.find(params[:id])
     end
 
     def article_params

@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency "neat"
   s.add_dependency "font-awesome-sass"
   s.add_dependency "awesome_nested_set"
+  s.add_dependency "friendly_id", '~> 5.1.0'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "shoulda-matchers"

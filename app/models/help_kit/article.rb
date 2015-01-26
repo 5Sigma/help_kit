@@ -1,5 +1,9 @@
 module HelpKit
   class Article < ActiveRecord::Base
+    include FriendlyId
+
+    friendly_id :title, use: [:slugged]
+
     belongs_to :category
     belongs_to :parent_article, class_name: 'Article'
     has_many :articles

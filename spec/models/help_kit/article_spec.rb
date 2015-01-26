@@ -6,6 +6,6 @@ module HelpKit
     it { should validate_presence_of :title }
     it { should belong_to :category }
     it { should belong_to :parent_article }
-    it { should have_many :article_tags }
+    # it { should have_many :article_tags }
   end
 end

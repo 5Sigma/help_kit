@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150126022104) do
     t.integer  "last_editor_id"
     t.integer  "category_id"
     t.integer  "parent_article_id"
+    t.string   "slug"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end

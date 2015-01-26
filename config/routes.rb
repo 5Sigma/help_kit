@@ -1,7 +1,9 @@
 HelpKit::Engine.routes.draw do
-  get '/' => 'landing#land', :as => :landing
-  get 'edit/:title' => 'articles#edit', :as => :edit_article
-  get ':title' => 'articles#show', :as => :article
-  patch ':title' => 'articles#update'
-  post 'new_article' => 'articles#create', :as => :new_article
+  get 'new' => 'articles#new', :as => :new_article
+  post 'new' => 'articles#create'
+  get 'edit/:id' =>  'articles#edit', :as => :edit_article
+  get ':id' => 'articles#show', :as => :article
+  patch ':id' => 'articles#update'
+
+
 end

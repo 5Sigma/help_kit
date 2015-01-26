@@ -10,6 +10,7 @@ class CreateHelpKitArticles < ActiveRecord::Migration
       t.references :last_editor, index: true
       t.references :category, index: true
       t.references :parent_article, index: true
+      t.string :slug
       t.timestamps null: false
     end
   end
