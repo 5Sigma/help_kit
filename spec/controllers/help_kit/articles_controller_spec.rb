@@ -38,7 +38,7 @@ module HelpKit
         end
         context "with invalid attributes" do
           before {
-            expect_any_instance_of(Article).to receive(:save) { false }
+            expect_any_instance_of(Article).to receive(:update) { false }
             patch :update, attributes
           }
           it { should render_template('edit') }

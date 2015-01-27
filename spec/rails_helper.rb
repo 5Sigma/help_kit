@@ -8,6 +8,7 @@ require 'factory_girl_rails'
 require 'awesome_nested_set'
 require 'capybara'
 require 'launchy'
+require 'faker'
 
 ActiveRecord::Migration.maintain_test_schema!
 

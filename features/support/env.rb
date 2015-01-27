@@ -9,6 +9,7 @@ ENV["RAILS_ROOT"] ||= File.dirname(__FILE__) + "../../../spec/dummy"
 
 require 'cucumber/rails'
 require 'factory_girl_rails'
+require 'faker'
 World(HelpKit::Engine.routes.url_helpers)
 Capybara.asset_host = 'http://localhost:3000'
 

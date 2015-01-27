@@ -1,1 +1,12 @@
-= render 'form', url: new_article_path
+= form_for @article, url: new_article_path do |f|
+  .title-input
+    =f.label :title
+    =f.text_field :title
+  .category-input
+    =f.label :category
+    =f.select :category_id,
+      nested_set_options(HelpKit::Category) {|i| "#{'-' * i.level} #{i.name}"}
+  .content-input
+    =f.label :content
+    =f.text_area :content
+  =f.submit 'Create Article'

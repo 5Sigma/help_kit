@@ -1,5 +1,4 @@
 require_dependency "help_kit/application_controller"
-
 module HelpKit
   class ArticlesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, :with => :not_found
@@ -32,7 +31,7 @@ module HelpKit
     end
 
     def update
-      if @article.save
+      if @article.update(article_params)
         redirect_to @article
       else
         render 'edit'

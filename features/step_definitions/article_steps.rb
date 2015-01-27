@@ -3,18 +3,19 @@ Given "an article" do
 end
 When "a guest views an article" do
   visit article_path(HelpKit::Article.last)
+  save_and_open_page
 end
 Then "a guest should see the article content" do
   expect(page).to have_content(HelpKit::Article.last.content)
 end
 
 When "admin creates a new article" do
+  FactoryGirl.create(:help_kit_category)
   attributes = FactoryGirl.attributes_for(:help_kit_article)
   visit article_path(attributes[:title])
   click_link 'Create Article'
   fill_in "article[content]", with: attributes[:content]
   click_button 'Create Article'
-  save_and_open_page
 end
 
 When "admin should see article content" do
@@ -23,7 +24,7 @@ When "admin should see article content" do
 end
 
 When "admin updates article content" do
-  visit article_path(HelpKit::Article.last.title)
+  visit article_path(HelpKit::Article.last)
   click_link 'edit'
   fill_in('article[content]', with: 'updated content')
   click_button 'Update Article'
