@@ -75,5 +75,12 @@ module HelpKit
         end
       end
     end
+    describe "#index_category" do
+      let(:article) { create(:help_kit_article) }
+      it "should include articles in category" do
+        expect(Article).to receive(:for_category).with(article.category)
+        get :index_category, category: article.category
+      end
+    end
   end
 end

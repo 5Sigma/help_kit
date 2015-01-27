@@ -11,12 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126022104) do
+ActiveRecord::Schema.define(version: 20150127175326) do
+
+  create_table "help_kit_article_tags", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "help_kit_article_tags", ["article_id"], name: "index_help_kit_article_tags_on_article_id"
+  add_index "help_kit_article_tags", ["tag_id"], name: "index_help_kit_article_tags_on_tag_id"
 
   create_table "help_kit_articles", force: :cascade do |t|
     t.string   "title"
     t.boolean  "published"
     t.text     "content"
+    t.text     "description"
     t.datetime "published_at"
     t.integer  "view_count"
     t.integer  "creator_id"
@@ -35,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150126022104) do
 
   create_table "help_kit_categories", force: :cascade do |t|
     t.string   "name"
+    t.string   "slug"
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
@@ -45,5 +57,11 @@ ActiveRecord::Schema.define(version: 20150126022104) do
   end
 
   add_index "help_kit_categories", ["parent_id"], name: "index_help_kit_categories_on_parent_id"
+
+  create_table "help_kit_tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

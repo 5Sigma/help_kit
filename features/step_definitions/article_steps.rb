@@ -3,33 +3,36 @@ Given "an article" do
 end
 When "a guest views an article" do
   visit article_path(HelpKit::Article.last)
-  save_and_open_page
 end
 Then "a guest should see the article content" do
-  expect(page).to have_content(HelpKit::Article.last.content)
+  expect(page).to have_content(HelpKit::Article.last.title)
 end
 
 When "admin creates a new article" do
-  FactoryGirl.create(:help_kit_category)
+  FactoryGirl.create(:category)
   attributes = FactoryGirl.attributes_for(:help_kit_article)
-  visit article_path(attributes[:title])
+  visit article_path(id: attributes[:title])
   click_link 'Create Article'
   fill_in "article[content]", with: attributes[:content]
   click_button 'Create Article'
 end
 
 When "admin should see article content" do
-  attributes = FactoryGirl.attributes_for(:help_kit_article)
-  expect(page).to have_content(attributes[:content])
+  expect(page).to have_content(HelpKit::Article.last.title)
 end
 
 When "admin updates article content" do
   visit article_path(HelpKit::Article.last)
-  click_link 'edit'
+  find('a.edit-article').click
   fill_in('article[content]', with: 'updated content')
   click_button 'Update Article'
 end
 
 Then "admin should see updated article content" do
   expect(page).to have_content('updated content')
+end
+
+Given "admin views a category" do
+  visit category_path(HelpKit::Category.top_level.first)
+  save_and_open_page
 end

@@ -4,6 +4,7 @@ class CreateHelpKitArticles < ActiveRecord::Migration
       t.string :title
       t.boolean :published
       t.text :content
+      t.text :description
       t.datetime :published_at
       t.integer :view_count
       t.references :creator, index: true

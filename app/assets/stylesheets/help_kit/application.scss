@@ -1,4 +1,11 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import "bourbon";
 @import "neat";
 @import "base/base";
 @import "page-container";
+@import "article";
+@import "footer";
+@import "letters";
+
+@import url(://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);

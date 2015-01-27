@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.2.0"
   s.add_dependency "bourbon"
   s.add_dependency "slim-rails"
+  s.add_dependency "sass-rails"
   s.add_dependency "neat"
   s.add_dependency "font-awesome-sass"
   s.add_dependency "awesome_nested_set"

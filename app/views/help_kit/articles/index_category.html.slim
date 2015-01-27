@@ -1,0 +1,7 @@
+.category-container
+  .category-list
+    -HelpKit::Category.top_level.each do |category|
+      .category =link_to category.name, category_path(category)
+  .article-list
+    =render @articles
+

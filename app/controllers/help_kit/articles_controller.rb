@@ -4,13 +4,16 @@ module HelpKit
     rescue_from ActiveRecord::RecordNotFound, :with => :not_found
     before_action :set_article, only: [:show, :edit, :update]
 
+
+
+    def index_category
+      @category = Category.friendly.find(params[:category])
+      @articles = Article.for_category(@category)
+    end
+
+
     def show
-      if @article
         render 'show'
-      else
-        @article = Article.new({title: params[:title]})
-        render 'new'
-      end
     end
 
     def new
@@ -41,6 +44,7 @@ module HelpKit
     private
 
     def not_found
+      @article = Article.new(title: params[:title])
       render 'not_found'
     end
 

@@ -1,5 +1,6 @@
 .page-container {
   @include pad;
+  @include clearfix;
   background: #fff;
   box-shadow: 1px 1px 1px darken($base-background-color, 15);
   border: 1px solid #eee;

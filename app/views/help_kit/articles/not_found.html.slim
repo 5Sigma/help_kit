@@ -1,3 +1,4 @@
-h1 Article not found
-p This article has not been created yet. Why dont you create it.
-p =link_to 'Create Article', new_article_path(title: params[:title])
+.article
+  h1 =params[:id]
+  p This article has not been created yet. Why dont you create it.
+  p =link_to 'Create Article', new_article_path(title: params[:id])
