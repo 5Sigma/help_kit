@@ -1,5 +1,7 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "animate";
+@import "animate/fadeInUp";
 @import "bourbon";
 @import "neat";
 @import "base/base";
@@ -7,5 +9,9 @@
 @import "article";
 @import "footer";
 @import "letters";
+@import "split-view";
+
+@import "admin/categories";
+
 
 @import url(://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);

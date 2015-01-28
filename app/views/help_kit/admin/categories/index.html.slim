@@ -1,1 +1,10 @@
-#index
+.header
+  .actions
+    =link_to icon('plus'), new_admin_category_path, class: 'new-category'
+h1 Article categories
+p.subtitle Click any category to modify its properties.
+.category-list
+  =nested_li @categories  do |c|
+    .category-item
+      =link_to icon('circle-thin',c.name), [:edit, :admin, c]
+      span.count #{pluralize(c.articles.count, 'article')}

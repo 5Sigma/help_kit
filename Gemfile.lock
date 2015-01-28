@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     help_kit (0.0.1)
+      animate-scss
       awesome_nested_set
       bourbon
       font-awesome-sass
@@ -50,6 +51,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.6)
+    animate-scss (0.0.5)
+      sass
     arel (6.0.0)
     awesome_nested_set (3.0.2)
       activerecord (>= 4.0.0, < 5)

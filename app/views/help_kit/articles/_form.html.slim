@@ -5,4 +5,8 @@
   .content-input
     =f.label :content
     =f.text_area :content
+  .tag-input
+    =f.label :tags
+    =f.select :tag_ids, Tag.all.collect {|x| [x.name, x.id]}, {},
+      :multiple => true
   =f.submit
