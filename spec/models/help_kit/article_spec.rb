@@ -12,9 +12,15 @@ module HelpKit
     describe "#for_category" do
       let(:category) { create(:category) }
       let(:article) { create(:help_kit_article, category: category) }
-      let(:sub_cateogry) { create(:category, parent: category) }
+      let(:sub_category) { create(:category, parent: category) }
+
       it "should include articles in category" do
-        expect(Article.all.for_category(category)).to eq([article])
+        expect(Article.all.for_category(category)).to include(article)
+      end
+      it "should include articles in sub-categories" do
+        sub_article = create(:help_kit_article, category: sub_category)
+        category.reload
+        expect(Article.for_category(category)).to include(sub_article)
       end
     end
   end

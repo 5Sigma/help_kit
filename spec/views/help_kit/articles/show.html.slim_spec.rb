@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe "help_kit/articles/show.html.slim", :type => :view do
   let(:article) { create(:help_kit_article) }
   before {
+    view.extend HelpKit::ArticleHelper
     assign(:article, article)
     render
   }
-  subject { rendered } 
-  it { should have_content(article.content) }
+  subject { rendered }
   it { should have_content(article.title) }
 end

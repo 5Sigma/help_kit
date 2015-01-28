@@ -1,18 +1,21 @@
-.header
-  -if @article.category
-    .breadcrumb
-      =category_breadcrumb(@article.category)
-  .actions
-    =link_to icon('edit'), edit_article_path(@article), class: 'edit-article'
-.article-container
-  article.article
-    h1 =@article.title
-    p =simple_format @article.content
-  .details
-    .tags
-      .inline-title tags
-      -@article.tags.each do |tag|
-        .tag =link_to tag.name, ''
-    .inline-detail
-      .inline-title last updated
-      span =time_ago_in_words @article.updated_at.to_s(:short)
+.letter
+  .header
+    -if @article.category
+      .breadcrumb
+        =category_breadcrumb(@article.category)
+    .actions
+      =link_to icon('edit'), help_kit.edit_article_path(@article),
+        class: 'edit-article'
+  .article-container
+    article.article
+      h1 =@article.title
+      p.subtitle =@article.description
+      p =simple_format @article.content
+    .details
+      .tags
+        .inline-title tags
+        -@article.tags.each do |tag|
+          .tag =link_to tag.name, ''
+      .inline-detail
+        .inline-title last updated
+        span =time_ago_in_words @article.updated_at.to_s(:short)

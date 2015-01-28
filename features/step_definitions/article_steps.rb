@@ -32,7 +32,10 @@ Then "admin should see updated article content" do
   expect(page).to have_content('updated content')
 end
 
-Given "admin views a category" do
+Given "guest views a category" do
   visit category_path(HelpKit::Category.top_level.first)
-  save_and_open_page
+end
+
+Then(/guest should see (\d+) article[s]?/) do |count|
+  expect(page).to have_selector('.article-item', count: count)
 end

@@ -1,4 +1,13 @@
 HelpKit::Engine.routes.draw do
+
+
+  namespace :admin do
+    resources :categories
+  end
+
+
+  get '/' => 'landing#land', :as => :land
+
   get '/categories/:category' => 'articles#index_category',
     :as => :category
 

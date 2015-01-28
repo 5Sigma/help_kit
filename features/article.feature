@@ -15,7 +15,8 @@ Feature: Article browsing
   Scenario: admin views a category
     Given a logged in admin user
     And an article
-    And admin views a category
+    When guest views a category
+    Then guest should see 1 article
 
 
 

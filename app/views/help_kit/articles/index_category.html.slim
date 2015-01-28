@@ -1,7 +1,16 @@
 .category-container
   .category-list
     -HelpKit::Category.top_level.each do |category|
-      .category =link_to category.name, category_path(category)
+      -if @category == category || @category.is_child_of(category)
+        .category class="active"
+          =category.name
+        .sub-categories
+          -@category.children.each do |category|
+            .sub-category
+              =link_to category.name, help_kit.category_path(category)
+      -else
+        .category
+          =link_to category.name, help_kit.category_path(category)
   .article-list
     =render @articles
 

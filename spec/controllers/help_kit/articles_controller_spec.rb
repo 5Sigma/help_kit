@@ -38,11 +38,14 @@ module HelpKit
         end
         context "with invalid attributes" do
           before {
-            expect_any_instance_of(Article).to receive(:update) { false }
-            patch :update, attributes
+            allow_any_instance_of(Article).to receive(:update) { false }
           }
-          it { should render_template('edit') }
+          it "should render edit template" do
+            patch :update, attributes
+            expect(response).to render_template('edit')
+          end
           it "should assign @article" do
+            patch :update, attributes
             expect(assigns(:article)).to eq(article)
           end
         end
