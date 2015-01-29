@@ -10,7 +10,7 @@
     article.article
       h1 =@article.title
       p.subtitle =@article.description
-      p =simple_format @article.content
+      == @article.content
     .details
       .tags
         .inline-title tags
