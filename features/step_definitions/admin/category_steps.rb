@@ -2,6 +2,7 @@ When "admin creates a category" do
   visit admin_categories_path
   find('a.new-category').click
   fill_in 'category[name]', with: "My new category"
+  save_and_open_page
   click_button 'Create Category'
 end
 

@@ -1,8 +1,16 @@
-= form_for [:admin, @category] do |f|
-  .form-group
-    =f.label :name
-    =f.text_field :name
-  .form-group
-    =f.label :parent_id, 'Parent category'
-    =f.select :parent_id, nested_set_options(HelpKit::Category, @category) {|i| "#{'-' * i.level} #{i.name}" }, prompt: 'No Parent'
+= simple_form_for [:admin, @category] do |f|
+  =f.input :name
+  =f.input :parent_id,
+    collection: category_options(@category),
+    prompt: 'No Parent',
+    label: 'Parent category'
+  hr/
+  =f.label :header_content
+  =f.text_area :header_content, class: 'tinymce', rows: 30, cols: 80
+  .form-actions
     =f.submit
+  = tinymce :skin => :light, menubar: false, resize: false,statusbar: false,
+    toolbar: [ 'styleselect bold italic link image code numlist bullist paste blockquote fullscreen'],
+    plugins: 'image link fullscreen table',
+    content_css: '/assets/help_kit/article_compiled.css',
+    body_class: 'article'

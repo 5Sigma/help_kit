@@ -8,6 +8,7 @@ class CreateHelpKitCategories < ActiveRecord::Migration
       t.integer :rgt
       t.integer :depth
       t.integer :children_count
+      t.text :header_content
       t.timestamps null: false
     end
   end

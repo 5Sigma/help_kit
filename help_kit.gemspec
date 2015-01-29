@@ -22,11 +22,15 @@ Gem::Specification.new do |s|
   s.add_dependency "bourbon"
   s.add_dependency "slim-rails"
   s.add_dependency "sass-rails"
-  s.add_dependency "animate-scss"
   s.add_dependency "neat"
   s.add_dependency "font-awesome-sass"
   s.add_dependency "awesome_nested_set"
   s.add_dependency "friendly_id", '~> 5.1.0'
+  s.add_dependency "simple_form"
+  s.add_dependency "select2-rails"
+  s.add_dependency "coffee-rails"
+  s.add_dependency "jquery-rails"
+  s.add_dependency "tinymce-rails"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "shoulda-matchers"

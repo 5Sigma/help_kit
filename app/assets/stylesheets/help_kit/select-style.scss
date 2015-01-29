@@ -1,0 +1,11 @@
+.select2-container {
+  border: none;
+  .select2-choice {
+    background-image: none;
+    background-color: white;
+    .select2-arrow {
+      background: white;
+      border:none;
+    }
+  }
+}

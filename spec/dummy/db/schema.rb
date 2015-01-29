@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150127175326) do
     t.integer  "rgt"
     t.integer  "depth"
     t.integer  "children_count"
+    t.text     "header_content"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

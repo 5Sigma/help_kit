@@ -1,12 +1,22 @@
-= form_for @article, url: url do |f|
-  .title-input
-    =f.label :title
-    =f.text_field :title
-  .content-input
-    =f.label :content
-    =f.text_area :content
-  .tag-input
-    =f.label :tags
-    =f.select :tag_ids, Tag.all.collect {|x| [x.name, x.id]}, {},
-      :multiple => true
-  =f.submit
+.letter
+  = simple_form_for @article, url: url do |f|
+    =f.input :title
+    =f.input :category_id,
+      collection: category_options(@category),
+      prompt: 'No Category',
+      label: 'Category'
+    hr/
+    .content-input
+      =f.text_area :content, class: 'tinymce', rows: 30, cols: 80
+    .form-actions
+      =f.submit 'Create Article'
+= tinymce :skin => :light, menubar: false, resize: false,statusbar: false,
+  toolbar: [ 'styleselect bold italic link image code numlist bullist paste blockquote fullscreen'],
+  plugins: 'image link fullscreen table',
+  content_css: '/assets/help_kit/article_compiled.css',
+  body_class: 'article',
+  force_p_newlines: true,
+  force_br_newlines: false,
+  forced_root_block: false,
+  convert_newlines_to_brs: false,
+  remove_linebreaks: true
