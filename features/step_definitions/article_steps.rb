@@ -33,7 +33,14 @@ Then "admin should see updated article content" do
 end
 
 Given "guest views a category" do
-  visit category_path(HelpKit::Category.top_level.first)
+  category = HelpKit::Category.top_level.first
+  FactoryGirl.create_list(:category,2)
+  sub_categories = FactoryGirl.create_list(:category,2,parent:category)
+  FactoryGirl.create_list(:help_kit_article, 2, category: category)
+  FactoryGirl.create_list(:help_kit_article, 2, category: sub_categories.first)
+
+  visit category_path(category)
+  save_and_open_page
 end
 
 Then(/guest should see (\d+) article[s]?/) do |count|

@@ -128,8 +128,13 @@
 }
 
 .article-list {
+  margin-top: 20px;
   .article-item {
     @include clearfix;
+    border-bottom: 1px solid $base-border-color;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    width: 100%;
     display: table;
     .article-item-glyph {
       text-align: center;
@@ -137,12 +142,16 @@
       display: table-cell;
       vertical-align: top;
       img {
-        margin-top: 6px;
+        margin-top: 2px;
         width: 32px;
       }
     }
-    .article-item-details {
+    &:last-child {
+      border-bottom: none;
+    }
+    .article-item-info {
       display: table-cell;
+      width: auto;
       .title {
         a {
           @include transition(all, 0.5s);
@@ -158,7 +167,7 @@
       .description {
         font-size: 0.8em;
         line-height: 1;
-        color: #888;
+        color: #666;
       }
     }
   }

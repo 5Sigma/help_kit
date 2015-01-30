@@ -12,7 +12,8 @@ Feature: Article browsing
     And an article
     When admin updates article content
     Then admin should see updated article content
-  Scenario: admin views a category
+  @wip
+  Scenario: Guest views a category
     Given a logged in admin user
     And an article
     When guest views a category

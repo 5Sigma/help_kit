@@ -1,0 +1,15 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic);
+
+textarea.markdown {
+  font-family: 'Ubuntu  Mono', monospace;
+  width: 100%;
+  resize: none;
+  font-size: 14px;
+  background: white;
+  color: #555;
+  padding: 25px;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+}

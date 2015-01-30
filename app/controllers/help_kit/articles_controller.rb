@@ -30,7 +30,7 @@ module HelpKit
     end
 
     def edit
-      render 'edit'
+      render 'edit', layout: 'admin'
     end
 
     def update

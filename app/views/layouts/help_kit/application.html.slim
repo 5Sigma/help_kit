@@ -6,5 +6,8 @@ html
     = javascript_include_tag "help_kit/application"
     = csrf_meta_tags
   body
+    .action-header
+      .right
+        =link_to icon('cog', 'Settings'), admin_landing_path, class: 'admin-link'
     = yield
-    .site-footer powered by HelpKit
+  .site-footer powered by HelpKit

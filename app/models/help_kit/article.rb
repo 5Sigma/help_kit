@@ -16,8 +16,13 @@ module HelpKit
     scope :for_category, -> (category) {
       where(category: category.self_and_descendants.pluck(:id))
     }
+
     scope :popular, -> (count) {
       order(:view_count => :desc).limit(count)
+    }
+
+    scope :recent, -> (count) {
+      order(:updated_at => :desc).limit(count)
     }
 
   end

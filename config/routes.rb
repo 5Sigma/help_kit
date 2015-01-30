@@ -1,7 +1,7 @@
 HelpKit::Engine.routes.draw do
 
-
   namespace :admin do
+    get '/' => 'landing#land', :as => :landing
     resources :categories
   end
 
@@ -16,6 +16,5 @@ HelpKit::Engine.routes.draw do
   get 'edit/:id' =>  'articles#edit', :as => :edit_article
   get ':id' => 'articles#show', :as => :article
   patch ':id' => 'articles#update'
-
 
 end

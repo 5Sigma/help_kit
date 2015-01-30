@@ -2,47 +2,57 @@
 .split-view {
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
   @include row(table);
-  margin: auto;
-  max-width: 90%;
   background: white;
   .menu {
     @include span-columns(3);
+    background: #f9f9f9;
+    padding-top: 20px;
     width: 200px;
     vertical-align: top;
     border-right: 1px solid $base-border-color;
     .menu-item {
       a {
+        @include transition(all,0.5s);
         display: block;
-        padding: 6px 15px;
-        border-bottom: 1px solid $base-border-color;
-        font-size: 0.9em;
-        color: #777;
+        padding: 7px 9px;
+        font-size: 1em;
+        color: #444;
+        font-weight: 500;
         &:hover {
-          background: #f9f9f9;
+          color: $base-accent-color;
         }
       }
       &.active {
         display: block;
-        padding: 6px 12px;
-        border-bottom: 1px solid $base-border-color;
         font-size: 0.9em;
-        background: $base-accent-color;
-        color: white;
+        @include linear-gradient($base-accent-color, darken($base-accent-color,10));
+        a {
+          color: white;
+          &:hover {
+            color: white;
+            background: transparent;
+          }
+        }
       }
     }
     .sub-menu {
       .sub-menu-item {
         a {
           font-size: 0.75em;
+          font-weight: bold;
           display: block;
           padding: 4px 20px;
-          color: #666;
+          color: #444;
           border-bottom: 1px solid transparent;
           &:hover {
-            background: #f9f9f9;
-            border-bottom: 1px solid $base-border-color;
+            color: #080808;
+          }
+        }
+        &.active {
+          a {
+            color: $base-accent-color;
           }
         }
       }

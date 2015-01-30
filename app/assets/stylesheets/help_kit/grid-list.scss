@@ -1,0 +1,8 @@
+.grid-list {
+  @include outer-container;
+  @include row(block);
+  .grid-item {
+    @include span-columns(2);
+    @include omega(6);
+  }
+}

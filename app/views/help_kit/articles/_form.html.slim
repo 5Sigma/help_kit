@@ -1,20 +1,11 @@
-.letter
-  = simple_form_for @article, url: url do |f|
-    =f.input :title
-    =f.input :category_id,
-      collection: category_options(@category),
-      prompt: 'No Category',
-      label: 'Category'
-    =f.input :description, input_html: { rows: 3 }
-    hr/
-    .content-input
-      =f.text_area :content, class: 'tinymce', rows: 30, cols: 80
-    .form-actions
-      =f.submit 'Create Article'
-= tinymce :skin => :light, menubar: false, resize: false,statusbar: false,
-  toolbar: [ 'styleselect bold italic link image code numlist bullist paste blockquote fullscreen'],
-  plugins: 'image link fullscreen table',
-  content_css: '/assets/help_kit/article_compiled.css',
-  body_class: 'article',
-  cleanup: true,
-  extended_valid_elements: "span[!class]"
+= simple_form_for @article, url: url do |f|
+  =f.input :title, label: false
+  =f.text_area :content, class: 'markdown', rows: 30, cols: 80
+  .form-actions
+    =f.submit 'Create Article'
+-simple_form_for @article, url: url, remote: true do |f|
+  =f.input :category_id,
+    collection: category_options(@category),
+    prompt: 'No Category',
+    label: 'Category'
+  =f.input :description, input_html: { rows: 3 }

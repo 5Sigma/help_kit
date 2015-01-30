@@ -6,8 +6,7 @@ html
     = javascript_include_tag "help_kit/application"
     = csrf_meta_tags
   body
-    .split-view
-      .menu
-        .menu-item =link_to 'Categories', admin_categories_path
-      .content
-        = yield
+    .action-header
+      .right
+        =link_to icon('power-off', 'Exit'), landing_path, class: 'admin-link'
+    = yield

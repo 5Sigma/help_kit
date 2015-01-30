@@ -1,0 +1,39 @@
+.landing {
+  .search {
+    input {
+      width: 100%;
+      padding: 4px 8px;
+      box-shadow: none;
+    }
+  }
+  .articles {
+    @include outer-container;
+    .section {
+      @include span-columns(6);
+    }
+  }
+  .categories {
+    .category {
+      a {
+        color: #454545;
+        line-height: 1;
+        font-weight: 500;
+        &:hover {
+          color: $base-accent-color;
+        }
+      }
+    }
+    .sub-category {
+      line-height: 1em;
+      a {
+        font-size: 0.8em;
+        color: #999;
+        line-height: 1;
+        font-weight: 400;
+        &:hover {
+          color: #121212;
+        }
+      }
+    }
+  }
+}
