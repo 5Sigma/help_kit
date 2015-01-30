@@ -55,7 +55,9 @@ module HelpKit
     def article_params
       params.require(:article).permit(
         :title,
-        :content
+        :content,
+        :category_id,
+        :description
       )
     end
 

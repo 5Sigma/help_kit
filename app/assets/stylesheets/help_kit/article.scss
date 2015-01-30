@@ -90,6 +90,7 @@
   }
 }
 .article {
+  font-size: 0.9em;
   p {
     font-family: 'Open Sans', sans-serif;
     color: rgb(51, 51, 51);
@@ -100,10 +101,10 @@
     color: #444;
   }
   h2 {
-    font-size: 1.1em;
-    font-weight: bold;
+    font-size: 1.4em;
+    font-weight: normal;
     margin-top: 20px;
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
   }
   p.subtitle {
     margin-top: 20px;
@@ -114,22 +115,30 @@
   p.subtitle+p {
     margin-top: 40px;
   }
+  ol,ul {
+    margin-left: 40px;
+    margin-bottom: 15px;
+  }
+  ol {
+    list-style-type: decimal;
+  }
+  ul {
+    list-style-type: disc;
+  }
 }
 
-.content.article-list {
-  .article-item {
-    .title {
-      a {
-        font-size: 0.9em;
-        color: #161616;
-        font-weight: bold;
-        &:hover {
-          color: $base-accent-color;
+.content {
+  .article-list {
+    .article-item {
+      .title {
+        a {
+          font-size: 0.9em;
+          font-weight: bold;
         }
       }
-    }
-    .description {
-      font-size: 0.8em;
+      .description {
+        font-size: 0.8em;
+      }
     }
   }
 }

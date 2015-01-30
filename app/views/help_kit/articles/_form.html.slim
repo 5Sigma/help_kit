@@ -5,6 +5,7 @@
       collection: category_options(@category),
       prompt: 'No Category',
       label: 'Category'
+    =f.input :description, input_html: { rows: 3 }
     hr/
     .content-input
       =f.text_area :content, class: 'tinymce', rows: 30, cols: 80
@@ -15,4 +16,5 @@
   plugins: 'image link fullscreen table',
   content_css: '/assets/help_kit/article_compiled.css',
   body_class: 'article',
-  cleanup: true
+  cleanup: true,
+  extended_valid_elements: "span[!class]"

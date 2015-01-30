@@ -37,6 +37,7 @@ label {
   }
   label {
     display: table-cell;
+    vertical-align: top;
     width: 150px;
     color: #666;
     font-weight: bold;
@@ -45,7 +46,7 @@ label {
       display: none;
     }
   }
-  #{$all-text-inputs} {
+  #{$all-text-inputs}, textarea {
     @include transition(all, 0.5s);
     width: auto;
     width: 100%;
@@ -64,6 +65,9 @@ label {
       outline: none;
       color: #333;
     }
+  }
+  textarea {
+    background: #f9f9f9;
   }
   &.required {
     label {

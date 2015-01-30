@@ -44,7 +44,7 @@ module HelpKit
     end
 
     def category_params
-      params.require(:category).permit(:name, :parent_id)
+      params.require(:category).permit(:name, :parent_id, :header_content)
     end
   end
 end

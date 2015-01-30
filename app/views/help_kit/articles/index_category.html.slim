@@ -1,16 +1,21 @@
-.category-container
-  .category-list
+.split-view
+  .menu
     -HelpKit::Category.top_level.each do |category|
       -if @category == category || @category.is_child_of(category)
-        .category class="active"
+        .menu-item.category class="active"
           =category.name
-        .sub-categories
+        .submenu-item.sub-categories
           -@category.children.each do |category|
             .sub-category
               =link_to category.name, help_kit.category_path(category)
       -else
         .category
           =link_to category.name, help_kit.category_path(category)
-  .article-list
-    =render @articles
+  .content
+    - if @category.header_content
+      .article
+        ==@category.header_content
+      hr/
+    .article-list
+      =render @articles
 

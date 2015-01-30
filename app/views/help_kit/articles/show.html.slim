@@ -12,10 +12,11 @@
       p.subtitle =@article.description
       == @article.content
     .details
-      .tags
-        .inline-title tags
-        -@article.tags.each do |tag|
-          .tag =link_to tag.name, ''
+      -if @article.tags.count > 0
+        .tags
+          .inline-title tags
+          -@article.tags.each do |tag|
+            .tag =link_to tag.name, ''
       .inline-detail
         .inline-title last updated
         span =time_ago_in_words @article.updated_at.to_s(:short)

@@ -4,7 +4,8 @@ module HelpKit
       content_tag :ul do
         concat content_tag(:li, link_to(icon('home'), ''))
         current_category.self_and_ancestors.each do |category|
-          concat content_tag(:li, link_to(category.name, ''))
+          concat content_tag(:li,
+                             link_to(category.name, category_path(category)))
         end
       end
     end
