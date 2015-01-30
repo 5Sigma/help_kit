@@ -127,17 +127,38 @@
   }
 }
 
-.content {
-  .article-list {
-    .article-item {
+.article-list {
+  .article-item {
+    @include clearfix;
+    display: table;
+    .article-item-glyph {
+      text-align: center;
+      width: 48px;
+      display: table-cell;
+      vertical-align: top;
+      img {
+        margin-top: 6px;
+        width: 32px;
+      }
+    }
+    .article-item-details {
+      display: table-cell;
       .title {
         a {
+          @include transition(all, 0.5s);
           font-size: 0.9em;
           font-weight: bold;
+          line-height: 1;
+          color: #454545;
+          &:hover {
+            color: $base-accent-color;
+          }
         }
       }
       .description {
         font-size: 0.8em;
+        line-height: 1;
+        color: #888;
       }
     }
   }

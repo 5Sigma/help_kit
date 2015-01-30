@@ -1,3 +1,6 @@
 .article-item
-  .title =link_to article.title, help_kit.article_path(article)
-  .description =article.description
+  .article-item-glyph
+    = image_tag 'help_kit/document.png'
+  .article-item-info
+    .title =link_to article.title, help_kit.article_path(article)
+    .description =article.description

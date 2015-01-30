@@ -6,7 +6,7 @@ HelpKit::Engine.routes.draw do
   end
 
 
-  get '/' => 'landing#land', :as => :land
+  get '/' => 'landing#land', :as => :landing
 
   get '/categories/:category' => 'articles#index_category',
     :as => :category
