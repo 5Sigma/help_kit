@@ -16,14 +16,12 @@ module HelpKit
     scope :for_category, -> (category) {
       where(category: category.self_and_descendants.pluck(:id))
     }
+    scope :popular, -> (count) { order(:view_count => :desc).limit(count) }
+    scope :recent, -> (count) { order(:updated_at => :desc).limit(count) }
+    scope :unviewed, -> (count) { where(view_count: [nil,0]).limit(count) }
 
-    scope :popular, -> (count) {
-      order(:view_count => :desc).limit(count)
-    }
-
-    scope :recent, -> (count) {
-      order(:updated_at => :desc).limit(count)
-    }
-
+    def should_generate_new_friendly_id?
+        title_changed?
+    end
   end
 end

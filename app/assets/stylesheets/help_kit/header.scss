@@ -1,20 +1,83 @@
 .action-header {
   @include clearfix;
-  width: 90%;
-  margin: auto;
-  padding: 10px 0px;
-  font-size: 0.7em;
-  line-height: 0.7em;
+  margin-top: 10px;
+  padding: 0px 5px;
+  font-size: 0.9em;
+  line-height: 0.9em;
   .left {
     float: left;
   }
   .right {
     float: right;
+    text-align: right;
   }
   a {
+    @include transition(all, 0.5s);
     color: #aaa;
+    margin-right: 25px;
+    i {
+      color: #888;
+    }
     &:hover {
       color: #333;
+      i {
+        color: #121212;
+      }
+    }
+  }
+}
+
+.header {
+  font-family: 'Open Sans';
+  .nav {
+    $nav-height: 60px;
+    @include clearfix;
+    height: $nav-height;
+    @include linear-gradient(#444,#161616);
+    padding-left: 30px;
+    a,.brand {
+      line-height: $nav-height;
+    }
+    .brand {
+      float: left;
+      color: #fff;
+      font-size: 24px;
+      font-weight: 300;
+      i {
+        margin-right: 15px;
+      }
+      strong {
+        font-weight: 700;
+      }
+    }
+    .right {
+      float: right;
+      padding-right: 20px;
+      a {
+        color: #888;
+        font-size: 1.2em;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+.submenu {
+  background: #f9f9f9;
+  border-bottom: 1px solid $base-border-color;
+  font-size: 0.8em;
+  text-align: right;
+  padding: 0px 20px;
+  height: 35px;
+  line-height: 35px;
+  a {
+    color: #888;
+    padding: 0px 10px;
+    height: 35px;
+    line-height: 35px;
+    &:hover {
+      color: #444;
     }
   }
 }

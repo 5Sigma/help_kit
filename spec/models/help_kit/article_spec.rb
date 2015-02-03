@@ -23,5 +23,11 @@ module HelpKit
         expect(Article.for_category(category)).to include(sub_article)
       end
     end
+    it "should regenerate slug on update" do
+      article = create(:help_kit_article)
+      article.update(title: 'this is a test')
+      article.reload
+      expect(article.friendly_id).to eq('this-is-a-test')
+    end
   end
 end

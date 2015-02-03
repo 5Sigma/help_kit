@@ -10,6 +10,8 @@ require 'simple_form'
 require 'select2-rails'
 require 'tinymce-rails'
 require 'coffee-rails'
+require 'redcarpet'
+require 'pygmentize'
 
 module HelpKit
 end

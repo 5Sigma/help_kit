@@ -6,11 +6,5 @@
     label: 'Parent category'
   hr/
   =f.label :header_content
-  =f.text_area :header_content, class: 'tinymce', rows: 30, cols: 80
-  .form-actions
-    =f.submit
-  = tinymce :skin => :light, menubar: false, resize: false,statusbar: false,
-    toolbar: [ 'styleselect bold italic link image code numlist bullist paste blockquote fullscreen'],
-    plugins: 'image link fullscreen table',
-    content_css: '/assets/help_kit/article_compiled.css',
-    body_class: 'article'
+  pre#editor.category-editor =@category.header_content
+  =f.hidden_field :header_content

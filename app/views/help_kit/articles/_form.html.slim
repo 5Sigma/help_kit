@@ -1,11 +1,23 @@
-= simple_form_for @article, url: url do |f|
-  =f.input :title, label: false
-  =f.text_area :content, class: 'markdown', rows: 30, cols: 80
-  .form-actions
-    =f.submit 'Create Article'
--simple_form_for @article, url: url, remote: true do |f|
-  =f.input :category_id,
-    collection: category_options(@category),
-    prompt: 'No Category',
-    label: 'Category'
-  =f.input :description, input_html: { rows: 3 }
+-content_for :submenu
+  =link_to icon('cog', 'Article Settings'), '#', class: 'article-details'
+  =link_to icon('eye', 'Preview'), landing_path, class: 'admin-link'
+  =link_to icon('save', 'Save & Close'), "#", class: 'save-article'
+  =link_to icon('power-off', 'Exit'), landing_path, class: 'admin-link'
+=text_field_tag :article_title_temp, @article.title, class: 'article-title',
+  placeholder: 'Article Title'
+
+pre#editor.article-editor =@article.content
+
+.article-details-modal
+  h2 Article details
+  =simple_form_for @article, url: url do |f|
+    =f.input :category_id,
+      collection: category_options(@category),
+      prompt: 'No Category',
+      label: false
+    =f.input :description, input_html: { rows: 3 }, label: false,
+      placeholder: 'Article description'
+    =f.hidden_field :content, class: 'content'
+    =f.hidden_field :title
+    .form-actions
+      =button_tag 'Close', class: 'hide-article-modal'

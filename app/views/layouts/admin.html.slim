@@ -6,7 +6,14 @@ html
     = javascript_include_tag "help_kit/application"
     = csrf_meta_tags
   body
-    .action-header
-      .right
-        =link_to icon('power-off', 'Exit'), landing_path, class: 'admin-link'
-    = yield
+    = render 'help_kit/admin/nav'
+    .submenu =yield :submenu
+
+    .split-view
+      .menu
+        .menu-item
+          =split_view_menu_item(icon('home','Welcome'), admin_landing_path, 'landing')
+          =split_view_menu_item(icon('list','Categories'), admin_categories_path, 'categories')
+          =split_view_menu_item(icon('tag','Tags'), '', 'tags')
+      .content
+        = yield

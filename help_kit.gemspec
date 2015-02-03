@@ -31,6 +31,8 @@ Gem::Specification.new do |s|
   s.add_dependency "coffee-rails"
   s.add_dependency "jquery-rails"
   s.add_dependency "tinymce-rails"
+  s.add_dependency "redcarpet"
+  s.add_dependency "pygmentize"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "shoulda-matchers"

@@ -29,6 +29,8 @@
       .article
         ==@category.header_content
       hr/
+    .article-list
+      = render @category.articles
     -@category.descendants.each do |category|
       -if category.articles.count > 0
         a name=category.slug

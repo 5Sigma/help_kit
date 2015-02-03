@@ -4,6 +4,7 @@ module HelpKit
     rescue_from ActiveRecord::RecordNotFound, :with => :not_found
     before_action :set_article, only: [:show, :edit, :update]
 
+    layout 'help_kit/minimal'
 
 
     def index_category
@@ -30,7 +31,7 @@ module HelpKit
     end
 
     def edit
-      render 'edit', layout: 'admin'
+      render 'edit'
     end
 
     def update

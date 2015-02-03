@@ -1,3 +1,5 @@
+-content_for :submenu do
+  =link_to icon('save', 'Save & Exit'), '#', class: 'save-category'
+  =link_to icon('trash-o','Delete Category'), admin_category_path(@category),
+    data: { method: 'delete' }
 =render 'form'
-=link_to 'Delete Category', admin_category_path(@category),
-  data: { method: 'delete' }

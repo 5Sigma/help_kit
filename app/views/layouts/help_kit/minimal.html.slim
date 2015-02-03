@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title 5Sigma | #{content_for(:title)}
+    = stylesheet_link_tag "help_kit/application", media: "all"
+    = javascript_include_tag "help_kit/application"
+    = csrf_meta_tags
+  body
+    = render 'help_kit/nav'
+    -if content_for :submenu
+      .submenu =yield :submenu
+    = yield
+  .site-footer powered by HelpKit

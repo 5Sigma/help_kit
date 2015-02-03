@@ -1,0 +1,10 @@
+.header
+  .nav
+    .brand #{icon('book')}Knowledge<strong>Base</strong>
+    .right
+      #sb-search.sb-search
+        form
+          input.sb-search-input placeholder="Ask a question"
+          input.sb-search-submit type="submit"
+          span.sb-icon-search
+      =link_to icon('cog'), admin_landing_path

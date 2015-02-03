@@ -1,4 +1,5 @@
 .landing {
+  @include pad;
   .search {
     input {
       width: 100%;

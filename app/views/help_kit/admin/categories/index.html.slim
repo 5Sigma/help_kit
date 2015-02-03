@@ -1,6 +1,5 @@
-.header
-  .actions
-    =link_to icon('plus'), new_admin_category_path, class: 'new-category'
+-content_for :submenu do
+  =link_to icon('plus', 'New Category'), new_admin_category_path, class: 'new-category'
 h1 Article categories
 p.subtitle Click any category to modify its properties.
 .category-list

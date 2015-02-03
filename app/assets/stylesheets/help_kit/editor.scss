@@ -1,0 +1,127 @@
+@import url(//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic);
+$line-height: 28px;
+$active-line-color: #EBECF2;
+#editor.article-editor {
+  position: absolute;
+  bottom: 0;
+  top: 140px;
+  left: 0;
+  right: 0;
+}
+#editor.category-editor {
+  width: 100%;
+  height: 400px;
+}
+#editor {
+  width: 100%;
+  font-size: 14px;
+  font-family: 'Ubuntu Mono';
+  line-height: $line-height;
+  margin: 0;
+  .ace_line {
+    color: #444;
+    height: $line-height;
+    line-height: $line-height;
+  }
+  .ace_print-margin {
+    background: transparent;
+
+  }
+  .ace_heading {
+    font-weight: 700;
+    color: #161616;
+    &.ace_1 {
+      color: #ccc;
+    }
+  }
+  .ace_function {
+    color: rgb(60, 76, 114);
+    font-weight: 600;
+  }
+  .ace_selection {
+    background: rgb(181, 213, 255);
+  }
+  .ace_active-line, .ace_gutter-active-line {
+    background: $active-line-color;
+    border-bottom: 2px solid darken($active-line-color,10);
+  }
+  .ace_list {
+    font-style: italic;
+  }
+  .ace_string {
+    color: $base-accent-color;
+    font-weight: bold;
+  }
+
+  .ace_markup {
+    color: #ccc;
+  }
+
+  .ace_strong {
+    font-weight: 600;
+    color: #444;
+  }
+  .ace_emphasis {
+    font-style: italic;
+    color: #444;
+    font-weight: normal;
+  }
+}
+
+.article-details-modal {
+  @include pad;
+  border-radius: 5px;
+  display: none;
+  position: absolute;
+  left: calc(50% - 300px);
+  top: 300px;
+  width: 600px;
+  z-index: 999;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid $base-border-color;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  h2 {
+    margin-bottom: 20px;
+  }
+  button {
+    padding: 8px 12px;
+  }
+  .input {
+    margin-bottom: 0px;
+    margin-top: 10px;
+  }
+  textarea {
+    background: white;
+    border: 1px solid $base-border-color;
+    padding: 5px;
+    resize:none;
+    margin-bottom: 0px;
+
+    &:focus {
+      border: 1px solid darken($base-border-color, 10);
+    }
+  }
+  .form-actions {
+    margin-bottom: 0px;
+    border: none;
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+}
+.article-title {
+  @include transition(all, 0.5s);
+  width: 100%;
+  padding: 4px 15px;
+  font-family: 'Ubuntu Mono';
+  font-size: 24px;
+  color: #454545;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  &:hover {
+    border-bottom: 2px solid #444;
+  }
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid $base-accent-color;
+  }
+}
