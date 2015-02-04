@@ -18,7 +18,11 @@ $(document).on 'click', 'a.save-article', (e) ->
 
 $(document).on 'click', 'a.article-details', (e) ->
   e.preventDefault()
-  $('.article-details-modal').show()
+  modal = $('.article-details-modal')
+  modal.css opacity: 0, scale: 0.8
+  modal.show()
+  modal.transition opacity: 1, scale: 1, 500
+
 
 
 $(document).on 'click', '.hide-article-modal', (e) ->

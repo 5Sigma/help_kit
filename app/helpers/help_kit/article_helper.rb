@@ -5,6 +5,7 @@ module HelpKit
       Pygmentize.process(code, language)
     end
   end
+
   module ArticleHelper
     def category_breadcrumb(current_category, opts = {})
       content_tag :ul do
