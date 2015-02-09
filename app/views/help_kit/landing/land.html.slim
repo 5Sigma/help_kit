@@ -1,23 +1,16 @@
-.landing
+.center-container
   .search
-    h2 Search articles
-    = form_for :search, url: '/' do |f|
-      = f.text_field :query
-  hr/
-  .articles
-    .section
-      h2 Popular articles
-      .article-list
-        =render HelpKit::Article.popular(5)
-    .section
-      h2 Recent articles
-      .article-list
-        =render HelpKit::Article.recent(5)
-  hr/
-  .grid-list.categories
-    -HelpKit::Category.top_level.each do |category|
-      .grid-item
-        .category =link_to category.name, category_path(category)
-        -category.descendants.each do |sub_category|
-          .sub-category =link_to sub_category.name, category_path(sub_category)
-
+    = form_for :search, url: article_search_path, :method => :get do |f|
+      = f.text_field :query, placeholder: 'Search articles...'
+      = button_tag icon('search')
+  .panel.pad
+    .articles
+      .section
+        h2 Popular articles
+        .article-list
+          =render HelpKit::Article.popular(5)
+      .section
+        h2 Recent articles
+        .article-list
+          =render HelpKit::Article.recent(5)
+  =render 'help_kit/categories_panel'

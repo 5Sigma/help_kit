@@ -12,6 +12,10 @@ module HelpKit
       @articles = Article.for_category(@category)
     end
 
+    def search
+      @articles = Article.search(params[:search][:query])
+    end
+
 
     def show
         render 'show'

@@ -1,39 +1,67 @@
-.landing {
-  @include pad;
-  .search {
-    input {
-      width: 100%;
-      padding: 4px 8px;
+.search {
+  @include clearfix;
+  width: 480px;
+  margin: auto;
+  margin-bottom: 20px;
+  input {
+    float:left;
+    @include border-left-radius(5px);
+    border: 1px solid $base-border-color;
+    width: 400px;
+    padding: 0px 8px;
+    height: 35px;
+    box-shadow: none;
+    &:hover, &:active {
+      -webkit-appearance:none;
+      outline: 0;
       box-shadow: none;
+      border: 1px solid $base-border-color;
     }
   }
-  .articles {
-    @include outer-container;
-    .section {
-      @include span-columns(6);
-    }
+  button {
+    @include border-right-radius(5px);
+    border: 1px solid #161616;
+    background: #161616;
+    color: white;
+    float: left;
+    height: 35px;
+    width: 35px * $golden;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
   }
-  .categories {
-    .category {
-      a {
-        color: #454545;
-        line-height: 1;
-        font-weight: 500;
-        &:hover {
-          color: $base-accent-color;
-        }
+}
+p {
+  font-size: 0.8em;
+}
+.articles {
+  @include outer-container;
+  .section {
+    @include span-columns(6);
+  }
+}
+.categories {
+  font-size: 0.8em;
+  .category {
+    margin-top: 10px;
+    a {
+      color: #454545;
+      line-height: 1;
+      font-weight: 500;
+      &:hover {
+        color: $base-accent-color;
       }
     }
-    .sub-category {
-      line-height: 1em;
-      a {
-        font-size: 0.8em;
-        color: #999;
-        line-height: 1;
-        font-weight: 400;
-        &:hover {
-          color: #121212;
-        }
+  }
+  .sub-category {
+    line-height: 1em;
+    a {
+      font-size: 0.8em;
+      color: #999;
+      line-height: 1;
+      font-weight: 400;
+      &:hover {
+        color: #121212;
       }
     }
   }

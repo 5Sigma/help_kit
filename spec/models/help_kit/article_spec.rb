@@ -30,4 +30,21 @@ module HelpKit
       expect(article.friendly_id).to eq('this-is-a-test')
     end
   end
+  describe "#search" do
+    let(:article) {
+      create(:help_kit_article,
+             title: 'Some article title',
+             description: 'Test description',
+             content: 'Article content test' )
+    }
+    it "should match description text search" do
+      expect(Article.search("descr")).to eq([article])
+    end
+    it "should match content text search" do
+      expect(Article.search("content")).to eq([article])
+    end
+    it "should match title text search" do
+      expect(Article.search("Some")).to eq([article])
+    end
+  end
 end

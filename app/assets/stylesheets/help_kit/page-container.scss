@@ -6,3 +6,8 @@
   border: 1px solid #eee;
   border-bottom: 1px solid #ccc;
 }
+
+.center-container {
+  @include outer-container;
+  @include pad;
+}

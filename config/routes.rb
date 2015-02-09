@@ -7,6 +7,7 @@ HelpKit::Engine.routes.draw do
 
 
   get '/' => 'landing#land', :as => :landing
+  get '/search' => 'articles#search', :as => :article_search
 
   get '/categories/:category' => 'articles#index_category',
     :as => :category

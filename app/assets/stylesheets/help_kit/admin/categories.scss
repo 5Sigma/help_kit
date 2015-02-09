@@ -2,7 +2,6 @@
   font-size: 0.8em;
   ul {
     margin-top: 4px;
-
     li {
       @include transition(all,0.5s);
       padding: 2px 0px;

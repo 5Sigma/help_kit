@@ -1,10 +1,12 @@
 .header
   .nav
-    .brand #{icon('book')}Knowledge<strong>Base</strong>
+    =link_to "#{icon('book')}Knowledge<strong>Base</strong>".html_safe, landing_path,
+      class: 'brand'
     .right
-      #sb-search.sb-search
-        form
-          input.sb-search-input placeholder="Ask a question"
-          input.sb-search-submit type="submit"
-          span.sb-icon-search
-      =link_to icon('cog'), admin_landing_path
+      #article-search
+        = form_tag article_search_path, :method => :get
+          .input-container
+            input.search-input name="search[query]" placeholder="Ask a question"
+          .button-container
+            button.search-button type="submit"
+              = icon('search')

@@ -2,8 +2,8 @@
   =f.input :name
   =f.input :parent_id,
     collection: category_options(@category),
-    prompt: 'No Parent',
-    label: 'Parent category'
+    label: 'Parent category',
+    include_blank: 'No parent'
   hr/
   =f.label :header_content
   pre#editor.category-editor =@category.header_content

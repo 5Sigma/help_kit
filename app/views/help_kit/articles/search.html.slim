@@ -1,0 +1,11 @@
+.center-container
+  .search
+    = form_for :search, url: article_search_path, :method => :get do |f|
+      = f.text_field :query
+      = button_tag icon('search')
+  .panel.pad
+    h1 Results for <em>"#{params[:search][:query]}"</em>
+    p.subtitle #{pluralize(@articles.count, 'result')} found
+    .article-list
+      =render @articles
+  =render 'help_kit/categories_panel'

@@ -1,42 +1,44 @@
-.split-view
-  .menu
-    -HelpKit::Category.top_level.each do |category|
-      -if @category == category
-        .menu-item class="active"
-          =link_to category.name, help_kit.category_path(category)
-        .sub-menu.sub-categories
-          -@category.children.each do |sub_category|
-            .sub-menu-item
-              =link_to sub_category.name, help_kit.category_path(sub_category)
-      -elsif @category.is_descendant_of?(category)
-        .menu-item.active
-          =link_to category.name, help_kit.category_path(category)
-        .sub-menu.sub-categories
-          -category.children.each do |sub_category|
-            -if @category == sub_category
-              .sub-menu-item.active
-                =link_to sub_category.name, help_kit.category_path(sub_category)
-            -else
-              .sub-menu-item
-                =link_to sub_category.name, help_kit.category_path(sub_category)
+.center-container
+  .panel
+    .split-view
+      .menu
+        -HelpKit::Category.top_level.each do |category|
+          -if @category == category
+            .menu-item class="active"
+              =link_to category.name, help_kit.category_path(category)
+            .sub-menu.sub-categories
+              -@category.children.each do |sub_category|
+                .sub-menu-item
+                  =link_to sub_category.name, help_kit.category_path(sub_category)
+          -elsif @category.is_descendant_of?(category)
+            .menu-item.active
+              =link_to category.name, help_kit.category_path(category)
+            .sub-menu.sub-categories
+              -category.children.each do |sub_category|
+                -if @category == sub_category
+                  .sub-menu-item.active
+                    =link_to sub_category.name, help_kit.category_path(sub_category)
+                -else
+                  .sub-menu-item
+                    =link_to sub_category.name, help_kit.category_path(sub_category)
 
-      -else
-        .menu-item.category
-          =link_to category.name, help_kit.category_path(category)
-  .content
-    h1 =@category.name
-    - if @category.header_content
-      .article
-        ==@category.header_content
-      hr/
-    .article-list
-      = render @category.articles
-    -@category.descendants.each do |category|
-      -if category.articles.count > 0
-        a name=category.slug
-        h2 =category.name
+          -else
+            .menu-item.category
+              =link_to category.name, help_kit.category_path(category)
+      .content
+        h1 =@category.name
+        - if @category.header_content
+          .article
+            ==@category.header_content
+          hr/
         .article-list
-          =render category.articles
+          = render @category.articles
+        -@category.descendants.each do |category|
+          -if category.articles.count > 0
+            a name=category.slug
+            h2 =category.name
+            .article-list
+              =render category.articles
 
 
 

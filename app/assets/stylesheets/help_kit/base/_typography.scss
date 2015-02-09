@@ -8,6 +8,9 @@ body {
   font-size: $base-font-size;
   line-height: $base-line-height;
 }
+body.minimal {
+  background: #f9f9f9;
+}
 
 h1,
 h2,

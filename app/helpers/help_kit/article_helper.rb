@@ -4,6 +4,12 @@ module HelpKit
       require 'pygmentize'
       Pygmentize.process(code, language)
     end
+
+    def header(text, level)
+      level += 1
+      "<h#{level}>#{text}</h#{level}>"
+    end
+
   end
 
   module ArticleHelper
