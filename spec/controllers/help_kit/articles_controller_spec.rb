@@ -7,7 +7,7 @@ module HelpKit
       context "with existing article" do
         before { get :show, id: article}
         it { should render_template('show') }
-        it { should render_with_layout('help_kit/application') }
+        it { should render_with_layout('help_kit/minimal') }
         it { should rescue_from(ActiveRecord::RecordNotFound).with(:not_found) }
         it "should assign article" do
           expect(assigns(:article)).to eq(article)

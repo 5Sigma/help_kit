@@ -2,15 +2,15 @@ When "admin creates a category" do
   visit admin_categories_path
   find('a.new-category').click
   fill_in 'category[name]', with: "My new category"
-  click_button 'Create Category'
+  find('a.save-category').click
 end
 
 When "admin creates a nested category" do
   visit admin_categories_path
   find('a.new-category').click
   fill_in 'category[name]', with: "My new category"
-  select HelpKit::Category.first.name, from: 'category[parent_id]'
-  click_button 'Create Category'
+  select2 HelpKit::Category.first.name,'#s2id_category_parent_id'
+  find('a.save-category').click
 end
 
 Then(/admin should see (\d+) categor[y|ies]/) do |count|
@@ -28,7 +28,7 @@ When(/admin renames a category to "(.+)"/) do |name|
   visit admin_categories_path
   click_link HelpKit::Category.first.name
   fill_in 'category[name]', with: name
-  click_button 'Update Category'
+  find('a.save-category').click
 end
 
 Then(/admin should see a category named "(.+)"/) do |name|

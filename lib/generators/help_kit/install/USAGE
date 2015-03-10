@@ -1,0 +1,8 @@
+Description:
+    Creates config initializer, database migration files, and mounts help_kit
+into the routes file.
+Example:
+    rails generate help_kit:install
+
+    This will create:
+        config/initializers/help_kit.rb

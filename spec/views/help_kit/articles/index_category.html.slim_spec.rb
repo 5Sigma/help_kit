@@ -14,7 +14,7 @@ RSpec.describe "help_kit/articles/index_category.html.slim", :type => :view do
       render
     }
     subject { rendered }
-    it {should have_selector('.category.active', text: parent_category.name)}
+    it {should have_selector('.menu-item.active', text: parent_category.name)}
     it "should display articles in sub-categories" do
       expect(rendered).to have_selector('.article-item .title a',
                                         text: article.title)

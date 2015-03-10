@@ -13,5 +13,7 @@ require 'coffee-rails'
 require 'redcarpet'
 require 'pygmentize'
 
+require 'help_kit/configuration.rb'
+
 module HelpKit
 end

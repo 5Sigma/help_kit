@@ -5,7 +5,7 @@ module HelpKit
     describe "#land" do
       before { get :land }
       it { should render_template('land') }
-      it { should render_with_layout('help_kit/application') }
+      it { should render_with_layout('help_kit/minimal') }
     end
   end
 end

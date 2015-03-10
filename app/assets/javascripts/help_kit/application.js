@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery_ujs
 //= require select2
 //= require ace/ace
 //= require help_kit/jquery.transit.min

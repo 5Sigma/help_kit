@@ -16,11 +16,10 @@ module HelpKit
     def category_breadcrumb(current_category, opts = {})
       content_tag :ul do
         unless opts[:hide_home]
-          concat content_tag(:li, link_to(icon('home'), landing_path))
+          concat content_tag(:li, link_to(icon('home'), help_kit.landing_path))
         end
         current_category.self_and_ancestors.each do |category|
-          concat content_tag(:li,
-                             link_to(category.name, category_path(category)))
+          concat content_tag(:li, link_to(category.name, [help_kit, category]))
         end
       end
     end

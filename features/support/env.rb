@@ -1,3 +1,14 @@
+def select2(value, element_selector)
+  select2_container = first("#{element_selector}")
+  select2_container.find(".select2-choice").click
+
+  find(:xpath, "//body").find("input.select2-input").set(value)
+  page.execute_script(%|$("input.select2-input:visible").keyup();|)
+  drop_container = ".select2-results"
+  find(:xpath, "//body").find("#{drop_container} li", text: value).click
+end
+
+
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path("../../../spec/dummy/config/environment.rb",  __FILE__)
 ENV["RAILS_ROOT"] ||= File.dirname(__FILE__) + "../../../spec/dummy"
@@ -10,8 +21,14 @@ ENV["RAILS_ROOT"] ||= File.dirname(__FILE__) + "../../../spec/dummy"
 require 'cucumber/rails'
 require 'factory_girl_rails'
 require 'faker'
+require 'capybara/poltergeist'
 World(HelpKit::Engine.routes.url_helpers)
 Capybara.asset_host = 'http://localhost:3000'
+Capybara.register_driver :poltergeist do |app|
+  options = { js_errors: false }
+  Capybara::Poltergeist::Driver.new(app, options)
+end
+Capybara.javascript_driver = :poltergeist
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any

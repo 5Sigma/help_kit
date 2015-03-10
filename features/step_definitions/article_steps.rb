@@ -13,8 +13,12 @@ When "admin creates a new article" do
   attributes = FactoryGirl.attributes_for(:help_kit_article)
   visit article_path(id: attributes[:title])
   click_link 'Create Article'
-  fill_in "article[content]", with: attributes[:content]
-  click_button 'Create Article'
+  find('.article-details').click
+  select2(HelpKit::Category.first.name, '#s2id_article_category_id')
+  fill_in 'article[description]', with: attributes[:description]
+  click_link 'Close'
+  find('#editor').native.send_keys attributes[:content]
+  find('a.save-article').click
 end
 
 When "admin should see article content" do
@@ -24,8 +28,8 @@ end
 When "admin updates article content" do
   visit article_path(HelpKit::Article.last)
   find('a.edit-article').click
-  fill_in('article[content]', with: 'updated content')
-  click_button 'Update Article'
+  find('#editor').native.send_keys 'updated content'
+  find('a.save-article').click
 end
 
 Then "admin should see updated article content" do
@@ -33,14 +37,8 @@ Then "admin should see updated article content" do
 end
 
 Given "guest views a category" do
-  category = HelpKit::Category.top_level.first
-  FactoryGirl.create_list(:category,2)
-  sub_categories = FactoryGirl.create_list(:category,2,parent:category)
-  FactoryGirl.create_list(:help_kit_article, 2, category: category)
-  FactoryGirl.create_list(:help_kit_article, 2, category: sub_categories.first)
-
+  category = HelpKit::Category.first
   visit category_path(category)
-  save_and_open_page
 end
 
 Then(/guest should see (\d+) article[s]?/) do |count|
