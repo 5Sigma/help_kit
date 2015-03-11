@@ -16,7 +16,6 @@ PATH
       select2-rails
       simple_form
       slim-rails
-      tinymce-rails
 
 GEM
   remote: https://rubygems.org/
@@ -220,8 +219,6 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
-    tinymce-rails (4.1.6)
-      railties (>= 3.1.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     websocket-driver (0.5.1)

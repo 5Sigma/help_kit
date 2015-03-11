@@ -1,21 +1,21 @@
 module HelpKit
 
-  mattr_writer :site_title
-  def self.site_title; @site_title || 'KnowledgeBase'; end
+  def self.site_title=(val); @site_title=val;end
+  def self.site_title; @site_title ||= '5Sigma Help'; end
 
-  mattr_writer :header
+  def self.header=(val); @header = val;end;
   def self.header
-    '<i class="fa fa-book"></i>Knowledge<strong>Base</strong>'
+    @header ||= '<i class="fa fa-book"></i>Knowledge<strong>Base</strong>'
   end
 
-  mattr_writer :authorization_method
+  def self.authorization_method=(val);@authorization_method=val;end
   def self.authorization_method
-    @authorization_method ||= proc.new {True}
+    @authorization_method ||= lambda { True }
   end
 
 
   def self.authorize(&block)
-    self.authorization_method = block
+    @authorization_method = block
   end
 
   def self.config(&block)

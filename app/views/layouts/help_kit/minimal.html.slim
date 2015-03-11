@@ -10,9 +10,9 @@ html
     = csrf_meta_tags
   body.minimal
     = render 'help_kit/nav'
-    .submenu
-      =yield :submenu
-      - if is_authorized?
+    - if is_authorized?
+      .submenu
+        =yield :submenu
         =link_to icon('plus', 'New Article'), new_article_path
         =link_to icon('cog', 'Settings'), admin_landing_path
     = yield
