@@ -9,16 +9,16 @@ Gem::Specification.new do |s|
   s.version     = HelpKit::VERSION
   s.authors     = ["Joe Bellus"]
   s.email       = ["joe@5sigma.io"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of HelpKit."
-  s.description = "TODO: Description of HelpKit."
+  s.homepage    = "http://helpkit.5sigma.io"
+  s.summary     = "Knowledgebase engine for Rails"
+  s.description = "An isolated knowledgebase system for Rails that is easily application mountable"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
 
 
-  s.add_dependency "rails", "~> 4.2.0"
+  s.add_dependency "rails", "~> 4"
   s.add_dependency "bourbon"
   s.add_dependency "slim-rails"
   s.add_dependency "sass-rails"

@@ -1,7 +1,10 @@
 doctype html
 html
   head
-    title #{HelpKit.site_title} | #{content_for(:title)}
+    - if content_for?(:title)
+        title #{HelpKit.site_title} | #{content_for(:title)}
+    - else
+        title #{HelpKit.site_title}
     = stylesheet_link_tag "help_kit/application", media: "all"
     = javascript_include_tag "help_kit/application"
     = csrf_meta_tags
@@ -9,7 +12,8 @@ html
     = render 'help_kit/nav'
     .submenu
       =yield :submenu
-      =link_to icon('plus', 'New Article'), new_article_path
-      =link_to icon('cog', 'Settings'), admin_landing_path
+      - if is_authorized?
+        =link_to icon('plus', 'New Article'), new_article_path
+        =link_to icon('cog', 'Settings'), admin_landing_path
     = yield
   .site-footer powered by HelpKit

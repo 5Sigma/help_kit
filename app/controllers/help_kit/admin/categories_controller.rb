@@ -2,7 +2,7 @@ require_dependency "help_kit/application_controller"
 
 module HelpKit
   class Admin::CategoriesController < ApplicationController
-    layout 'admin'
+    layout 'help_kit/admin'
     before_action :set_category, only: [:show, :edit, :update, :destroy]
 
     def index

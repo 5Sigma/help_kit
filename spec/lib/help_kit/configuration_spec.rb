@@ -28,4 +28,12 @@ RSpec.describe 'HelpKit Configuration' do
       expect(HelpKit.is_authorized?).to eq(23)
     end
   end
+  describe "#site_title" do
+    it "should respond to #site_title" do
+      expect(HelpKit.respond_to?(:site_title))
+    end
+    it "should respond to #site_title=" do
+      expect(HelpKit.respond_to?(:site_title=))
+    end
+  end
 end

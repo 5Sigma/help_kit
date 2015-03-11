@@ -9,8 +9,8 @@ class HelpKit::InstallGenerator < Rails::Generators::Base
   def copy_initializer
     initializer "help_kit.rb", <<-FILE
 HelpKit.config do |config|
-  # config.title is used to display the page titles.
-  config.title = "Knowledgebase"
+  # config.site_title is used to display the page titles.
+  config.site_title = "Knowledgebase"
 
   # config.authorize should check if the current session is capable of editing
   # and managing the help system. If it does not return false or nil article
