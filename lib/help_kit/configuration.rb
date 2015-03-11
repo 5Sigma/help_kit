@@ -8,7 +8,10 @@ module HelpKit
     '<i class="fa fa-book"></i>Knowledge<strong>Base</strong>'
   end
 
-  mattr_accessor :authorization_method
+  mattr_writer :authorization_method
+  def self.authorization_method
+    @authorization_method ||= proc.new {True}
+  end
 
 
   def self.authorize(&block)

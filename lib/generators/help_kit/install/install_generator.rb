@@ -10,7 +10,11 @@ class HelpKit::InstallGenerator < Rails::Generators::Base
     initializer "help_kit.rb", <<-FILE
 HelpKit.config do |config|
   # config.site_title is used to display the page titles.
-  config.site_title = "Knowledgebase"
+  # config.site_title = "KnowledgeBase"
+
+  # config.header is used to display the branded text in the header bar on all
+  # pages.
+  # config.header = '<i class="fa fa-book"></i>Knowledge<strong>Base</strong>'
 
   # config.authorize should check if the current session is capable of editing
   # and managing the help system. If it does not return false or nil article
