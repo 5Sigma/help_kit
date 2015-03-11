@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Joe Bellus"]
   s.email       = ["joe@5sigma.io"]
   s.homepage    = "http://helpkit.5sigma.io"
-  s.summary     = "Knowledgebase engine for Rails"
-  s.description = "An isolated knowledgebase system for Rails that is easily application mountable"
+  s.summary     = "Knowledgebase engine for Rails."
+  s.description = "An isolated knowledgebase system for Rails that is mountable inside applications."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
