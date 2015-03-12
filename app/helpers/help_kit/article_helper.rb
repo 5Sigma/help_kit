@@ -26,6 +26,9 @@ module HelpKit
     def render_markdown(content)
       markdown = Redcarpet::Markdown.new(PygmentizeHTML,
                                          autolink: true,
+                                         no_intra_emphasis: true,
+                                         superscript: true,
+                                         footnotes: true,
                                          tables: true,
                                          fenced_code_blocks: true)
       markdown.render(content)

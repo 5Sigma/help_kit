@@ -10,7 +10,7 @@ module HelpKit
 
   def self.authorization_method=(val);@authorization_method=val;end
   def self.authorization_method
-    @authorization_method ||= lambda { True }
+    @authorization_method ||= lambda { true }
   end
 
 
