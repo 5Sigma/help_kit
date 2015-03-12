@@ -8,7 +8,4 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w(tinymce/themes/modern/theme.js)
-Rails.application.config.assets.precompile += %w(tinymce/skins/light/skin.min.css)
-Rails.application.config.assets.precompile += %w(tinymce/skins/light/content.min.css)
 Rails.application.config.assets.precompile += %w(help_kit/article_compiled.css)

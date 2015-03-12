@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    help_kit (0.0.1)
+    help_kit (0.0.3)
       awesome_nested_set
       bourbon
       coffee-rails
