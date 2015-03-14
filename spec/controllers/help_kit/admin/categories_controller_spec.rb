@@ -4,10 +4,16 @@ module HelpKit
   RSpec.describe Admin::CategoriesController, :type => :controller do
 
     describe "#index" do
-      before { get :index }
       let(:category) { create(:category) }
+      before {
+        create(:category, parent_id:category.id)
+        get :index
+      }
       it "should assing @categories" do
         expect(assigns(:categories)).to eq([category])
+      end
+      it "should not contain sub category" do
+        expect(assigns(:categories).count).to eq(1)
       end
       it { should render_template('index') }
     end
