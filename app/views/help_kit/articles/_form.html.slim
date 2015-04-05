@@ -2,6 +2,9 @@
   =link_to icon('cog', 'Article Settings'), '#', class: 'article-details'
   =link_to icon('save', 'Save & Close'), "#", class: 'save-article'
   =link_to icon('power-off', 'Exit'), landing_path, class: 'admin-link'
+  -unless @article.new_record?
+    =link_to icon('trash', 'Delete'), article_path(@article),
+      method: 'delete', class: 'delete-article'
 =text_field_tag :article_title_temp, @article.title, class: 'article-title',
   placeholder: 'Article Title'
 

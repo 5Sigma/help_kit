@@ -8,11 +8,14 @@ html
   body
     = render 'help_kit/admin/nav'
     .submenu =yield :submenu
-
+    - if flash[:success].present?
+      .flash.success =flash[:success]
     .split-view
       .menu
         .menu-item
-          =split_view_menu_item(icon('home','Welcome'), admin_landing_path, 'landing')
-          =split_view_menu_item(icon('list','Categories'), admin_categories_path, 'categories')
+          =split_view_menu_item(icon('home','Welcome'),
+            admin_landing_path, 'landing')
+          =split_view_menu_item(icon('list','Categories'),
+            admin_categories_path, 'categories')
       .content
         = yield

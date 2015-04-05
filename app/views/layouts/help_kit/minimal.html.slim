@@ -15,5 +15,7 @@ html
         =yield :submenu
         =link_to icon('plus', 'New Article'), new_article_path
         =link_to icon('cog', 'Settings'), admin_landing_path
+    - if flash[:success].present?
+      .flash.success =flash[:sucess]
     = yield
   .site-footer powered by HelpKit

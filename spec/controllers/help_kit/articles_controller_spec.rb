@@ -85,5 +85,44 @@ module HelpKit
         get :index_category, category: article.category
       end
     end
+    describe "#delete" do
+      before {
+        article
+      }
+      context "authorized user" do
+        before {
+          allow_any_instance_of(ApplicationController)
+            .to receive(:is_authorized?).and_return(true)
+        }
+        it "should remove article record" do
+          expect {
+            delete :destroy, id: article
+          }.to change(Article, :count).by(-1)
+        end
+        it "should redirect to admin_landing" do
+          delete :destroy, id: article
+          expect(response).to redirect_to admin_landing_path
+        end
+        it "should set flash message" do
+          delete :destroy, id: article
+          expect(flash[:success]).to_not be_nil
+        end
+      end
+      context "when unauthorized" do
+        before {
+          allow_any_instance_of(ApplicationController)
+            .to receive(:is_authorized?).and_return(false)
+        }
+        it "should redirect to landing page" do
+          delete :destroy, id: article
+          expect(response).to redirect_to landing_path
+        end
+        it "should not remove article from the database" do
+          expect {
+            delete :destroy, id: article
+          }.to change(Article, :count).by(0)
+        end
+      end
+    end
   end
 end

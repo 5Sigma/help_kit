@@ -25,6 +25,12 @@ When "admin should see article content" do
   expect(page).to have_content(HelpKit::Article.last.title)
 end
 
+When "admin deletes an article" do
+  visit article_path(HelpKit::Article.last)
+  find('a.edit-article').click
+  find('a.delete-article').click
+end
+
 When "admin updates article content" do
   visit article_path(HelpKit::Article.last)
   find('a.edit-article').click
@@ -44,3 +50,4 @@ end
 Then(/guest should see (\d+) article[s]?/) do |count|
   expect(page).to have_selector('.article-item', count: count)
 end
+

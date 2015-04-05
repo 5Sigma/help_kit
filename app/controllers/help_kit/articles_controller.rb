@@ -2,7 +2,7 @@ require_dependency "help_kit/application_controller"
 module HelpKit
   class ArticlesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, :with => :not_found
-    before_action :set_article, only: [:show, :edit, :update]
+    before_action :set_article, only: [:show, :edit, :update, :destroy]
 
     layout 'help_kit/minimal'
 
@@ -43,6 +43,14 @@ module HelpKit
         redirect_to @article
       else
         render 'edit'
+      end
+    end
+
+    def destroy
+      return redirect_to landing_path unless is_authorized?
+      if @article.destroy
+        flash[:success] = "Article deleted."
+        redirect_to admin_landing_path
       end
     end
 
