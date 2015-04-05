@@ -5,6 +5,8 @@ module HelpKit
     layout 'help_kit/admin'
     before_action :set_category, only: [:show, :edit, :update, :destroy]
 
+    before_action :check_authorization
+
     def index
       @categories = Category.roots
     end
@@ -45,6 +47,13 @@ module HelpKit
 
     def category_params
       params.require(:category).permit(:name, :parent_id, :header_content)
+    end
+
+    def check_authorization
+      unless is_authorized?
+        redirect_to landing_path
+        return false
+      end
     end
   end
 end

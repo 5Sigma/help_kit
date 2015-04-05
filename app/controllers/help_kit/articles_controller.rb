@@ -4,6 +4,9 @@ module HelpKit
     rescue_from ActiveRecord::RecordNotFound, :with => :not_found
     before_action :set_article, only: [:show, :edit, :update, :destroy]
 
+    before_action :check_authorization,
+      only: [ :new, :create, :edit, :update, :destroy]
+
     layout 'help_kit/minimal'
 
 
@@ -16,10 +19,7 @@ module HelpKit
       @articles = Article.search(params[:search][:query])
     end
 
-
-    def show
-        render 'show'
-    end
+    def show; end
 
     def new
       @article = Article.new(title: params[:title])
@@ -34,9 +34,7 @@ module HelpKit
       end
     end
 
-    def edit
-      render 'edit'
-    end
+    def edit; end
 
     def update
       if @article.update(article_params)
@@ -47,7 +45,6 @@ module HelpKit
     end
 
     def destroy
-      return redirect_to landing_path unless is_authorized?
       if @article.destroy
         flash[:success] = "Article deleted."
         redirect_to admin_landing_path
@@ -72,6 +69,13 @@ module HelpKit
         :category_id,
         :description
       )
+    end
+
+    def check_authorization
+      unless is_authorized?
+        redirect_to article_path(Article.friendly.find(params[:id]))
+        return false
+      end
     end
 
   end
