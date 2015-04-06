@@ -53,7 +53,7 @@ Given "guest views a category" do
   visit category_path(category)
 end
 
-Then(/guest should see (\d+) article[s]?/) do |count|
+Then(/should see (\d+) article[s]?/) do |count|
   expect(page).to have_selector('.article-item', count: count)
 end
 

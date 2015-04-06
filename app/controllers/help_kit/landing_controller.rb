@@ -5,6 +5,8 @@ module HelpKit
     layout 'help_kit/minimal'
 
     def land
+       @popular = Article.published.popular(5)
+       @recent = Article.published.recent(5)
     end
 
   end

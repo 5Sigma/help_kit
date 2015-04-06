@@ -4,7 +4,6 @@ module HelpKit
   class Admin::LandingController < ApplicationController
      layout 'help_kit/admin'
      def land
-
      end
   end
 end

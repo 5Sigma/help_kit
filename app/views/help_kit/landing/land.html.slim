@@ -1,16 +1,23 @@
 .center-container
   .search
-    = form_for :search, url: article_search_path, :method => :get do |f|
+    = form_for :search, url: help_kit.article_search_path,
+      :method => :get do |f|
       = f.text_field :query, placeholder: 'Search articles...'
       = button_tag icon('search')
   .panel.pad
     .articles
-      .section
-        h2 Popular articles
-        .article-list
-          =render HelpKit::Article.popular(5)
-      .section
-        h2 Recent articles
-        .article-list
-          =render HelpKit::Article.recent(5)
-  =render 'help_kit/categories_panel'
+      - if @recent.count > 0
+        .section.popular
+          h2 Popular articles
+          .article-list
+            =render @popular
+        .section.recent
+          h2 Recent articles
+          .article-list
+            =render @recent
+        =render 'help_kit/categories_panel'
+      - else
+        .no-articles
+          h2 Uh oh
+          p We have no articles to list at the moment... Check back later...
+
