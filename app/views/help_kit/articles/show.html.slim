@@ -1,9 +1,22 @@
 -content_for :title, @article.title
 -content_for :submenu do
-  =link_to icon('edit', 'Edit Article'), help_kit.edit_article_path(@article),
-    class: 'edit-article'
+  -if HelpKit.is_authorized?
+    = link_to icon('edit', 'Edit Article'), help_kit.edit_article_path(@article),
+      class: 'edit-article'
+    - if @article.is_published?
+      = link_to icon('share', 'Unpublish'),
+        help_kit.unpublish_article_path(@article),
+        class: 'unpublish-article'
+    - else
+      = link_to icon('share', 'Publish'),
+        help_kit.publish_article_path(@article),
+        class: 'publish-article'
+
 .page-container
   .article-container
+    - unless @article.is_published?
+      .info.warn
+        = icon('info', 'This article has not been published')
     .article-header
       -if @article.category
         .breadcrumb
@@ -21,4 +34,8 @@
             .tag =link_to tag.name, ''
       .inline-detail
         .inline-title last updated
-        span =time_ago_in_words @article.updated_at.to_s(:short)
+        span =time_ago_in_words @article.updated_at
+        -if HelpKit.is_authorized? && @article.is_published?
+          .inline-detail
+            .inline-title published at
+            span =time_ago_in_words @article.published_at

@@ -50,7 +50,7 @@ module HelpKit
     end
 
     def check_authorization
-      unless is_authorized?
+      unless HelpKit.is_authorized?
         redirect_to landing_path
         return false
       end

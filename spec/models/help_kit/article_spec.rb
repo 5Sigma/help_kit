@@ -46,5 +46,48 @@ module HelpKit
     it "should match title text search" do
       expect(Article.search("Some")).to eq([article])
     end
+
+    describe "#publish!" do
+      before { article.publish! }
+      it "should set published_at" do
+        expect(article.published_at).to_not be_nil
+      end
+      it "should set published to true" do
+        expect(article.published).to eq(true)
+      end
+    end
+    describe "#unpublish!" do
+      before { article.publish!; article.unpublish! }
+      it "should unset published_at" do
+        expect(article.published_at).to be_nil
+      end
+      it "should set published to false" do
+        expect(article.published).to eq(false)
+      end
+    end
+    describe "#published" do
+      let(:published_article) {
+        create(:help_kit_article, published: true)
+      }
+      it "should include published article" do
+        expect(Article.published).to include(published_article)
+      end
+      it "should not include unpublished articles" do
+        article.unpublish!
+        expect(Article.published).to_not include(article)
+      end
+    end
+    describe "#unpublished" do
+      let(:published_article) {
+        create(:help_kit_article, published: true)
+      }
+      it "should not include published article" do
+        expect(Article.unpublished).to_not include(published_article)
+      end
+      it "should include unpublished articles" do
+        article.unpublish!
+        expect(Article.unpublished).to include(article)
+      end
+    end
   end
 end

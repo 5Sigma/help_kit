@@ -1,15 +1,23 @@
+h2 Unpublished articles
+.article-list
+  = render HelpKit::Article.unpublished
+hr/
+
 h2 Recently updated articles
 .article-list
   = render HelpKit::Article.recent(10)
 hr/
+
 h2 Unviewed articles
 .article-list
   = render HelpKit::Article.unviewed(10)
 hr/
+
 h2 Popular articles
 .article-list
   = render HelpKit::Article.popular(10)
 hr/
+
 h2 Empty categories
 -HelpKit::Category.no_articles.each do |category|
   .breadcrumb

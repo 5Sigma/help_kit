@@ -15,6 +15,8 @@ HelpKit::Engine.routes.draw do
   get 'new' => 'articles#new', :as => :new_article
   post 'new' => 'articles#create'
   get 'edit/:id' =>  'articles#edit', :as => :edit_article
+  get 'publish/:id' => 'articles#publish', :as => :publish_article
+  get 'unpublish/:id' => 'articles#unpublish', :as => :unpublish_article
   get ':id' => 'articles#show', :as => :article
   patch ':id' => 'articles#update'
   delete ':id' => 'articles#destroy'

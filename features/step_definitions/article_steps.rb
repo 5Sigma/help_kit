@@ -1,5 +1,11 @@
-Given "an article" do
-  FactoryGirl.create(:help_kit_article)
+Given(/^an (unpublished|published)?\s?article$/) do |flag|
+  article = FactoryGirl.create(:help_kit_article)
+  if flag == 'unpublished'
+    article.unpublish!
+  end
+  if flag == "published"
+    article.publish!
+  end
 end
 When "a guest views an article" do
   visit article_path(HelpKit::Article.last)
@@ -49,5 +55,15 @@ end
 
 Then(/guest should see (\d+) article[s]?/) do |count|
   expect(page).to have_selector('.article-item', count: count)
+end
+
+When(/^admin publishes an article$/) do
+  visit article_path(HelpKit::Article.last)
+  find('a.publish-article').click
+end
+
+When(/^admin unpublishes an article$/) do
+  visit article_path(HelpKit::Article.last)
+  find('a.unpublish-article').click
 end
 

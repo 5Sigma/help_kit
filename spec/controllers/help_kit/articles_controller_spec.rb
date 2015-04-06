@@ -5,7 +5,7 @@ module HelpKit
     let(:article) { create(:help_kit_article) }
     context "authorized" do
       before {
-        allow_any_instance_of(ApplicationController).to receive(:is_authorized?)
+        allow(HelpKit).to receive(:is_authorized?)
           .and_return(true)
       }
       describe "#show" do
@@ -106,19 +106,45 @@ module HelpKit
           expect(flash[:success]).to_not be_nil
         end
       end
+
+      describe "#publish" do
+        it "should set article to published" do
+          article.update(published: false)
+          get :publish, id: article
+          article.reload
+          expect(article.is_published?).to eq(true)
+        end
+        it "should redirect to article" do
+          get :publish, id: article
+          expect(response).to redirect_to(article_path(article))
+        end
+      end
+      describe "#unpublish" do
+        it "should set article to published" do
+          article.update(published: true)
+          get :unpublish, id: article
+          article.reload
+          expect(article.is_published?).to eq(false)
+        end
+        it "should redirect to article" do
+          get :unpublish, id: article
+          expect(response).to redirect_to(article_path(article))
+        end
+      end
     end
+
     context "unauthorized" do
       let(:attributes) {{ article: attributes_for(:help_kit_article) }}
       before {
-        allow_any_instance_of(ApplicationController).to receive(:is_authorized?)
+        allow(HelpKit).to receive(:is_authorized?)
           .and_return(false)
       }
 
-      %w{edit new create update destroy}.each do |action|
+      %w{edit new create update destroy publish unpublish}.each do |action|
         describe "##{action}" do
           before {
             article
-            if %w{new edit}.include?(action)
+            if %w{new edit publish unpublish}.include?(action)
               get action.to_sym, id: article
             end
             if %w{update create}.include?(action)
@@ -129,6 +155,15 @@ module HelpKit
           it { should redirect_to article_path(article) }
         end
       end
+
+      describe "#show" do
+        it "should not show unpublished article" do
+          article.unpublish!
+          get :show, id: article
+          expect(response).to render_template('not_found')
+        end
+      end
+
 
     end
   end

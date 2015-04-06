@@ -12,7 +12,6 @@ module HelpKit
     validates :title, presence: true
     validates :content, presence: true
 
-
     scope :for_category, -> (category) {
       where(category: category.self_and_descendants.pluck(:id))
     }
@@ -23,9 +22,23 @@ module HelpKit
       where('title LIKE :q OR content LIKE :q OR description LIKE :q',
             q: "%#{query}%")
     }
+    scope :published, -> { where(published: true) }
+    scope :unpublished, -> { where(published: [false, nil]) }
 
     def should_generate_new_friendly_id?
         title_changed?
+    end
+
+    def is_published?
+      published
+    end
+
+    def publish!
+      self.update(published:true, published_at: Time.current)
+    end
+
+    def unpublish!
+      self.update(published:false, published_at: nil)
     end
   end
 end

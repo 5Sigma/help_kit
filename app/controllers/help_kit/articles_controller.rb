@@ -1,18 +1,20 @@
 require_dependency "help_kit/application_controller"
 module HelpKit
   class ArticlesController < ApplicationController
+
     rescue_from ActiveRecord::RecordNotFound, :with => :not_found
-    before_action :set_article, only: [:show, :edit, :update, :destroy]
+    before_action :set_article,
+      only: [:show, :edit, :update, :destroy, :publish, :unpublish]
 
     before_action :check_authorization,
-      only: [ :new, :create, :edit, :update, :destroy]
+      only: [ :new, :create, :edit, :update, :destroy, :publish, :unpublish]
 
     layout 'help_kit/minimal'
 
 
     def index_category
       @category = Category.friendly.find(params[:category])
-      @articles = Article.for_category(@category)
+      @articles = Article.published.for_category(@category)
     end
 
     def search
@@ -51,15 +53,32 @@ module HelpKit
       end
     end
 
+    def publish
+      @article.publish!
+      flash[:success] = "Article published. It will now be viewable."
+      redirect_to article_path(@article)
+    end
+
+    def unpublish
+      @article.unpublish!
+      flash[:success] = "Article unpublished. This article will no longer be visible"
+      redirect_to article_path(@article)
+    end
+
     private
 
     def not_found
       @article = Article.new(title: params[:title])
       render 'not_found'
+      return false
     end
 
     def set_article
-      @article = Article.friendly.find(params[:id])
+      if HelpKit.is_authorized?
+        @article = Article.friendly.find(params[:id])
+      else
+        @article = Article.published.friendly.find(params[:id])
+      end
     end
 
     def article_params
@@ -72,7 +91,7 @@ module HelpKit
     end
 
     def check_authorization
-      unless is_authorized?
+      unless HelpKit.is_authorized?
         redirect_to article_path(Article.friendly.find(params[:id]))
         return false
       end

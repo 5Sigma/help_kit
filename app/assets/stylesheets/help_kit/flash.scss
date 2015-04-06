@@ -1,0 +1,25 @@
+.info {
+  text-align: right;
+  padding: 5px 8px;
+  font-weight: normal;
+  font-size: 0.8em;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  &.warn {
+    $color: #F9F6CC;
+    color: darken($color, 60);
+  }
+}
+$flash-success-color: #DDF9DE;
+
+.flash {
+  padding: 5px 8px;
+  font-weight: 600;
+  font-size: 0.8em;
+  border-bottom: 1px solid;
+  &.success {
+    background-color: $flash-success-color;
+    border-color: darken($flash-success-color, 20);
+    color: darken($flash-success-color, 70);
+  }
+}
