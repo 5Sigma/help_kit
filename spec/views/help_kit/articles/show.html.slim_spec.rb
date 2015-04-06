@@ -2,13 +2,16 @@ require 'rails_helper'
 
 RSpec.describe "help_kit/articles/show.html.slim", :type => :view do
   let(:article) { create(:help_kit_article) }
+  before {
+      view.extend HelpKit::ArticleHelper
+      view.extend HelpKit::AuthorizationHelper
+      assign(:article, article)
+  }
 
   context "unauthorized user" do
     before {
-      view.extend HelpKit::ArticleHelper
-      allow(HelpKit).to receive(:is_authorized?)
+      allow(view).to receive(:is_authorized?)
         .and_return(false)
-      assign(:article, article)
       render
     }
     subject { rendered }
@@ -25,10 +28,8 @@ RSpec.describe "help_kit/articles/show.html.slim", :type => :view do
 
   context "authorized user" do
     before {
-      view.extend HelpKit::ArticleHelper
-      allow(HelpKit).to receive(:is_authorized?)
+      allow(view).to receive(:is_authorized?)
         .and_return(true)
-      assign(:article, article)
       render
     }
     context "unpublished article" do

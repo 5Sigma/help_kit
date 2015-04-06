@@ -74,7 +74,7 @@ module HelpKit
     end
 
     def set_article
-      if HelpKit.is_authorized?
+      if is_authorized?
         @article = Article.friendly.find(params[:id])
       else
         @article = Article.published.friendly.find(params[:id])
@@ -91,7 +91,7 @@ module HelpKit
     end
 
     def check_authorization
-      unless HelpKit.is_authorized?
+      unless is_authorized?
         redirect_to article_path(Article.friendly.find(params[:id]))
         return false
       end

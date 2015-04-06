@@ -1,6 +1,6 @@
 -content_for :title, @article.title
 -content_for :submenu do
-  -if HelpKit.is_authorized?
+  -if is_authorized?
     = link_to icon('edit', 'Edit Article'), help_kit.edit_article_path(@article),
       class: 'edit-article'
     - if @article.is_published?
@@ -35,7 +35,7 @@
       .inline-detail
         .inline-title last updated
         span =time_ago_in_words @article.updated_at
-        -if HelpKit.is_authorized? && @article.is_published?
+        -if is_authorized? && @article.is_published?
           .inline-detail
             .inline-title published at
             span =time_ago_in_words @article.published_at

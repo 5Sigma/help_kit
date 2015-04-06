@@ -1,5 +1,7 @@
 module HelpKit
   class ApplicationController < ActionController::Base
-    private
+    include HelpKit::AuthorizationHelper
+
+
   end
 end

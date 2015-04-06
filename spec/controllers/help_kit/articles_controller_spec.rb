@@ -5,7 +5,7 @@ module HelpKit
     let(:article) { create(:help_kit_article) }
     context "authorized" do
       before {
-        allow(HelpKit).to receive(:is_authorized?)
+        allow(controller).to receive(:is_authorized?)
           .and_return(true)
       }
       describe "#show" do
@@ -136,7 +136,7 @@ module HelpKit
     context "unauthorized" do
       let(:attributes) {{ article: attributes_for(:help_kit_article) }}
       before {
-        allow(HelpKit).to receive(:is_authorized?)
+        allow(controller).to receive(:is_authorized?)
           .and_return(false)
       }
 

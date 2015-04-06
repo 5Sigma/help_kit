@@ -15,7 +15,4 @@ require 'pygmentize'
 require 'help_kit/configuration.rb'
 
 module HelpKit
-  def self.is_authorized?
-    self.instance_exec(&HelpKit.authorization_method)
-  end
 end

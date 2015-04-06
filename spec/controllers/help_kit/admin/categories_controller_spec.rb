@@ -5,7 +5,7 @@ module HelpKit
     let(:category) { create(:category) }
     context "authorized" do
       before {
-        allow(HelpKit).to receive(:is_authorized?)
+        allow(controller).to receive(:is_authorized?)
           .and_return(true)
       }
       describe "#index" do
@@ -107,7 +107,7 @@ module HelpKit
 
     context "unauthorized" do
       before {
-        allow(HelpKit).to receive(:is_authorized?)
+        allow(controller).to receive(:is_authorized?)
           .and_return(false)
       }
       let(:attributes) {{
