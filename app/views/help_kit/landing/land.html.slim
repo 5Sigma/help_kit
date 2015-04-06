@@ -5,8 +5,8 @@
       = f.text_field :query, placeholder: 'Search articles...'
       = button_tag icon('search')
   .panel.pad
-    .articles
-      - if @recent.count > 0
+    - if @recent.count > 0
+      .articles
         .section.popular
           h2 Popular articles
           .article-list
@@ -15,8 +15,8 @@
           h2 Recent articles
           .article-list
             =render @recent
-        =render 'help_kit/categories_panel'
-      - else
+      =render 'help_kit/categories_panel'
+    - else
         .no-articles
           h2 Uh oh
           p We have no articles to list at the moment... Check back later...
