@@ -10,11 +10,11 @@ html
     = csrf_meta_tags
   body.minimal
     = render 'help_kit/nav'
-    - if HelpKit.is_authorized?
+    - if is_authorized?
       .submenu
         =yield :submenu
-        =link_to icon('plus', 'New Article'), new_article_path
-        =link_to icon('cog', 'Settings'), admin_landing_path
+        =link_to icon('plus', 'New Article'), help_kit.new_article_path
+        =link_to icon('cog', 'Settings'), help_kit.admin_landing_path
     - if flash[:success].present?
       .flash.success =flash[:success]
     = yield

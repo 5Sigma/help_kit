@@ -1,10 +1,10 @@
 .header
   .nav
-    =link_to HelpKit.header.html_safe, landing_path,
+    =link_to HelpKit.header.html_safe, help_kit.landing_path,
       class: 'brand'
     .right
       #article-search
-        = form_tag article_search_path, :method => :get
+        = form_tag help_kit.article_search_path, :method => :get
           .input-container
             input.search-input name="search[query]" placeholder="Ask a question"
           .button-container
