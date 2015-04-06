@@ -5,17 +5,17 @@ hr/
 
 h2 Recently updated articles
 .article-list
-  = render HelpKit::Article.recent(10)
+  = render HelpKit::Article.published.recent(10)
 hr/
 
 h2 Unviewed articles
 .article-list
-  = render HelpKit::Article.unviewed(10)
+  = render HelpKit::Article.published.unviewed(10)
 hr/
 
 h2 Popular articles
 .article-list
-  = render HelpKit::Article.popular(10)
+  = render HelpKit::Article.published.popular(10)
 hr/
 
 h2 Empty categories
