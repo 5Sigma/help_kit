@@ -14,7 +14,7 @@ module HelpKit
 
     def index_category
       @category = Category.friendly.find(params[:category])
-      @articles = Article.published.for_category(@category)
+      @articles = Article.for_category(@category)
     end
 
     def search
@@ -75,9 +75,9 @@ module HelpKit
 
     def set_article
       if is_authorized?
-        @article = Article.friendly.find(params[:id])
+        @article = Article.unscoped.friendly.find(params[:id])
       else
-        @article = Article.published.friendly.find(params[:id])
+        @article = Article.friendly.find(params[:id])
       end
     end
 

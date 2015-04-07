@@ -18,16 +18,16 @@
       .info.warn
         = icon('info', 'This article has not been published')
     .article-header
-      -if @article.category
+      - if @article.category
         .breadcrumb
           =category_breadcrumb(@article.category)
     article.article
       h1 =@article.title
       p.subtitle =@article.description
       .article-content
-        ==render_markdown @article.content
+        == render_markdown @article.content
     .details
-      -if @article.tags.count > 0
+      - if @article.tags.count > 0
         .tags
           .inline-title tags
           -@article.tags.each do |tag|
@@ -35,7 +35,7 @@
       .inline-detail
         .inline-title last updated
         span =time_ago_in_words @article.updated_at
-        -if is_authorized? && @article.is_published?
-          .inline-detail
-            .inline-title published at
-            span =time_ago_in_words @article.published_at
+      - if is_authorized? && @article.is_published?
+        .inline-detail
+          .inline-title published at
+            span =time_ago_in_words(@article.published_at) rescue "never"

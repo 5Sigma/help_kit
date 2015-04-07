@@ -1,7 +1,6 @@
 def select2(value, element_selector)
   select2_container = first("#{element_selector}")
   select2_container.find(".select2-choice").click
-
   find(:xpath, "//body").find("input.select2-input").set(value)
   page.execute_script(%|$("input.select2-input:visible").keyup();|)
   drop_container = ".select2-results"
@@ -80,3 +79,4 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+HelpKit.authorization_method = Proc.new { false }

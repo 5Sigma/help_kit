@@ -164,6 +164,22 @@ module HelpKit
         end
       end
 
+      describe "#index_category" do
+        it "should not show unpublished articles" do
+          unpublished_article = create(:help_kit_article_unpublished,
+                                       category: article.category)
+          get :index_category, category: unpublished_article.category
+          expect(assigns(:articles)).to_not include(unpublished_article)
+        end
+        it "should not show unpublished articles in parent category" do
+          unpublished_article = create(:help_kit_article_unpublished,
+                                       category: article.category)
+          get :index_category,
+            category: unpublished_article.category.parent
+          expect(assigns(:articles)).to_not include(unpublished_article)
+        end
+      end
+
 
     end
   end

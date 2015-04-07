@@ -58,7 +58,7 @@ Then(/should see (\d+) article[s]?/) do |count|
 end
 
 When(/^admin publishes an article$/) do
-  visit article_path(HelpKit::Article.last)
+  visit article_path(HelpKit::Article.unpublished.last)
   find('a.publish-article').click
 end
 

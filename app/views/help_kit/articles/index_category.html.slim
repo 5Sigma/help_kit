@@ -17,11 +17,12 @@
               -category.children.each do |sub_category|
                 -if @category == sub_category
                   .sub-menu-item.active
-                    =link_to sub_category.name, help_kit.category_path(sub_category)
+                    =link_to sub_category.name,
+                      help_kit.category_path(sub_category)
                 -else
                   .sub-menu-item
-                    =link_to sub_category.name, help_kit.category_path(sub_category)
-
+                    =link_to sub_category.name,
+                      help_kit.category_path(sub_category)
           -else
             .menu-item.category
               =link_to category.name, help_kit.category_path(category)

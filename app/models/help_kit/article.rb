@@ -22,8 +22,10 @@ module HelpKit
       where('title LIKE :q OR content LIKE :q OR description LIKE :q',
             q: "%#{query}%")
     }
+
+    default_scope { published }
     scope :published, -> { where(published: true) }
-    scope :unpublished, -> { where(published: [false, nil]) }
+    scope :unpublished, -> { unscoped.where(published: [false, nil]) }
 
     def should_generate_new_friendly_id?
         title_changed?
@@ -34,11 +36,13 @@ module HelpKit
     end
 
     def publish!
-      self.update(published:true, published_at: Time.current)
+      self.update_column(:published, true)
+      self.update_column(:published_at, Time.current)
     end
 
     def unpublish!
-      self.update(published:false, published_at: nil)
+      self.update_column(:published, false)
+      self.update_column(:published_at, nil)
     end
   end
 end
