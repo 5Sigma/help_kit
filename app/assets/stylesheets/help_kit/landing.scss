@@ -35,21 +35,34 @@ p {
   font-size: 0.8em;
 }
 .articles {
-  @include outer-container;
+  @include row;
+  @include pad;
+  min-height: 300px;
   .section {
     @include span-columns(6);
   }
 }
 .categories {
   font-size: 0.8em;
-  .category {
-    margin-top: 10px;
-    a {
-      color: #454545;
-      line-height: 1;
-      font-weight: 500;
-      &:hover {
-        color: $base-accent-color;
+  text-align: left;
+  @include display(flex);
+  @include flex(1);
+  @include flex-direction(row);
+  @include align-items(stretch);
+  @include justify-content(center);
+  @include flex-wrap(wrap);
+  .category-block {
+    min-width: 100px;
+    padding: 10px;
+    .category {
+      margin-top: 10px;
+      a {
+        color: #888;
+        line-height: 1;
+        font-weight: 500;
+        &:hover {
+          color: #fff;
+        }
       }
     }
   }
@@ -57,12 +70,35 @@ p {
     line-height: 1em;
     a {
       font-size: 0.8em;
-      color: #999;
+      color: #ccc;
       line-height: 1;
       font-weight: 400;
       &:hover {
-        color: #121212;
+        color: #fff;
       }
     }
+  }
+}
+
+
+.landing-wrapper {
+  background-color: #fff;
+  @include pad;
+}
+
+.category-container {
+  @include pad;
+  background: #f9f9f9;
+  border-top: 1px solid #eee;
+  h2 {
+    margin: auto auto;
+    text-transform: uppercase;
+    padding: 5px 8px;
+    width: 80%;
+    font-size:1em;
+    color: #aaa;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1;
   }
 }

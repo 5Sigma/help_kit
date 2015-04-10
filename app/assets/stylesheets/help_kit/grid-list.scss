@@ -1,6 +1,6 @@
 .grid-list {
   @include outer-container;
-  @include row(block);
+  @include row(table);
   .grid-item {
     @include span-columns(2);
     @include omega(6);

@@ -18,4 +18,7 @@ html
     - if flash[:success].present?
       .flash.success =flash[:success]
     = yield
-  .site-footer powered by HelpKit
+    .site-footer
+      .copyright &copy MyCompany. All Rights Reserved.
+      .powered Powered by #{link_to 'HelpKit', 'http://helpkit.5sigma.io'}
+

@@ -15,5 +15,9 @@ module HelpKit
     def should_generate_new_friendly_id?
         name_changed?
     end
+
+    def all_article_count
+      Article.where(category_id: self.self_and_descendants.pluck(:id)).count
+    end
   end
 end
