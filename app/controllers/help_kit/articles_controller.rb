@@ -23,6 +23,7 @@ module HelpKit
 
     def show
       unless is_authorized?
+        @article.view_count = 0 if @article.view_count == nil
         @article.update_column('view_count', @article.view_count + 1)
       end
     end

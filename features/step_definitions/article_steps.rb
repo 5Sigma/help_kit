@@ -7,11 +7,15 @@ Given(/^an (unpublished|published)?\s?article$/) do |flag|
     article.publish!
   end
 end
+
 When "a guest views an article" do
+  HelpKit.authorize { false }
   visit article_path(HelpKit::Article.last)
+  HelpKit.authorize { true }
 end
+
 Then "a guest should see the article content" do
-  expect(page).to have_content(HelpKit::Article.last.title)
+  expect(page).to have_content(HelpKit::Article.last.description)
 end
 
 When "admin creates a new article" do

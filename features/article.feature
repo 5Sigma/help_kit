@@ -1,4 +1,5 @@
 Feature: Article browsing
+  @wip
   Scenario: view an existing article
     Given an article
     When a guest views an article
