@@ -16,7 +16,7 @@ module HelpKit
       where(category: category.self_and_descendants.pluck(:id))
     }
     scope :popular, -> (count) { order(:view_count => :desc).limit(count) }
-    scope :recent, -> (count) { order(:updated_at => :desc).limit(count) }
+    scope :recent, -> (count) { order(:created_at => :desc).limit(count) }
     scope :unviewed, -> (count) { where(view_count: [nil,0]).limit(count) }
     scope :search, ->(query) {
       where('title LIKE :q OR content LIKE :q OR description LIKE :q',
