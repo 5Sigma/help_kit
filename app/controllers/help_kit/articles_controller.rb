@@ -21,7 +21,11 @@ module HelpKit
       @articles = Article.search(params[:search][:query])
     end
 
-    def show; end
+    def show
+      unless is_authorized?
+        @article.update_column('view_count', @article.view_count + 1)
+      end
+    end
 
     def new
       @article = Article.new(title: params[:title])

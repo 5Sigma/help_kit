@@ -32,10 +32,22 @@
           .inline-title tags
           -@article.tags.each do |tag|
             .tag =link_to tag.name, ''
-      .inline-detail
-        .inline-title last updated
-        span =time_ago_in_words @article.updated_at
+      - if HelpKit.show_article_updated || is_authorized?
+        .inline-detail
+          span
+            | Last updated
+            strong  #{time_ago_in_words @article.updated_at}
+            |  ago on
+            strong  #{@article.updated_at.to_s(:short)}
       - if is_authorized? && @article.is_published?
         .inline-detail
-          .inline-title published at
-          span =time_ago_in_words(@article.published_at) rescue "never"
+          span
+            | Published
+            strong  #{time_ago_in_words @article.updated_at}
+            |  ago on
+            strong  #{@article.updated_at.to_s(:short)}
+        .inline-detail
+          span
+            | This article has been viewed
+            strong  #{@article.view_count.to_i}
+            |  times

@@ -61,20 +61,20 @@ p {
         line-height: 1;
         font-weight: 500;
         &:hover {
-          color: #fff;
+          color: #333;
         }
       }
     }
   }
   .sub-category {
-    line-height: 1em;
+    line-height: 1.1em;
     a {
       font-size: 0.8em;
-      color: #ccc;
+      color: #aaa;
       line-height: 1;
       font-weight: 400;
       &:hover {
-        color: #fff;
+        color: #333;
       }
     }
   }

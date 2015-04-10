@@ -9,6 +9,9 @@ module HelpKit
   def self.show_powered=(val); @show_powered=val;end
   def self.show_powered; @show_powered ||= true; end
 
+  def self.show_article_updated=(val); @show_article_updated=val;end
+  def self.show_article_updated; @show_article_updated ||= true; end
+
   def self.header=(val); @header = val;end;
   def self.header
     @header ||= '<i class="fa fa-book"></i>Knowledge<strong>Base</strong>'
