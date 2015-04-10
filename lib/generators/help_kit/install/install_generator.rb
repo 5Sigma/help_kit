@@ -12,6 +12,12 @@ HelpKit.config do |config|
   # config.site_title is used to display the page titles.
   # config.site_title = "KnowledgeBase"
 
+  # config.company_name is used for displaying a copyright notice on the page
+  # footer
+
+  config.company_name = "MyCompany"
+
+
   # config.header is used to display the branded text in the header bar on all
   # pages.
   # config.header = '<i class="fa fa-book"></i>Knowledge<strong>Base</strong>'

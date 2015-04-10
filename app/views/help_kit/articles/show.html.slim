@@ -38,4 +38,4 @@
       - if is_authorized? && @article.is_published?
         .inline-detail
           .inline-title published at
-            span =time_ago_in_words(@article.published_at) rescue "never"
+          span =time_ago_in_words(@article.published_at) rescue "never"

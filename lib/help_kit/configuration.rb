@@ -1,7 +1,13 @@
 module HelpKit
 
   def self.site_title=(val); @site_title=val;end
-  def self.site_title; @site_title ||= '5Sigma Help'; end
+  def self.site_title; @site_title ||= 'KnowledgeBase'; end
+
+  def self.company_name=(val); @company_name=val;end
+  def self.company_name; @company_name ||= 'MyCompany'; end
+
+  def self.show_powered=(val); @show_powered=val;end
+  def self.show_powered; @show_powered ||= true; end
 
   def self.header=(val); @header = val;end;
   def self.header

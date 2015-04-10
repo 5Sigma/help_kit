@@ -19,6 +19,8 @@ html
       .flash.success =flash[:success]
     = yield
     .site-footer
-      .copyright &copy MyCompany. All Rights Reserved.
-      .powered Powered by #{link_to 'HelpKit', 'http://helpkit.5sigma.io'}
+      .copyright &copy #{HelpKit.company_name}. All Rights Reserved.
+      - if HelpKit.show_powered
+        .powered Powered by #{link_to 'HelpKit', 'http://helpkit.5sigma.io'}
+
 
